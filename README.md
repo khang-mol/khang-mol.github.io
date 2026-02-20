@@ -1,5 +1,3 @@
 # khang-mol.github.io
 
-## Projects
-
-Fully functional game [hangman](https://github.com/khang-mol/Hangman).
+Link to the [website](https://khang-mol.github.io/).

@@ -4,15 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Molybdenum42</title>
+  
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-  <h1>Projects</h1>
-  <p>
-    Fully functional <a href="https://khang-mol.github.io/Hangman/">Hangman</a> game (<a href="https://github.com/khang-mol/Hangman" title="Link to GitHub project">GitHub</a>).
-  </p>
+  <header></header>
+  
+  <main>
+    <h1>My website</h1>
+    <h2>Blogs & Articles</h2>
+    <article>
+      <h4><a href="./blogs/set_up_paths.html">How to set up Paths in MacOS</a></h4>
+      <p>Learn how to shorten terminal commands and paths. Useful for automation.</p>
+    </article>
 
-  <p>
-    IMDb episode ratings web scraper (<a href="https://github.com/khang-mol/IMDb-web-scraper" title="Link to GitHub project">GitHub</a>).
-  </p>
+    <article>
+      <h4><a href="./blogs/eps3_from_svg.html">Create .eps (level 3) files from .svg</a></h4>
+      <p>Specifically useful, when an application only saves as <abbr title="Encapsulated PostScript">.eps</abbr> (level 2) like ChemDraw. Useful for IDEs (e.g. VSCode) without implicit conversion (e.g. Overleaf).</p>
+    </article>
+    
+    <h2>Projects</h2>
+
+    <h3>JavaScript</h3>
+    <p>
+      Fully functional <a href="https://khang-mol.github.io/Hangman/">Hangman</a> game featuring 8 categories. Minimalist but still more intricate CSS (<a href="https://github.com/khang-mol/Hangman" title="Link to GitHub project">GitHub</a>).
+    </p>
+    <h3>Python</h3>
+    <p>
+      Rudimentary IMDb episode ratings web scraper, which returns the episode ratings as an array (the whole series) of arrays (each season) (<a href="https://github.com/khang-mol/IMDb-web-scraper" title="Link to GitHub project">GitHub</a>).
+    </p>
+    
+    
+
+    <h2>Automation-scripts</h2>
+    
+    <p>
+      Scripts for automating mundane tasks. All code can be found <a href="https://github.com/khang-mol/Automation-scripts">here</a>.
+    </p>
+
+    <ul>
+      <li>
+        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/python">python</a>
+        <ul>
+          <li><strong>svg2eps</strong></li>
+          <p>Transforms .svg into .eps (version 3). Useful for the chemnum package in LaTeX, if the IDE features no implicit conversion.</p>
+        </ul>
+      </li>
+
+      <li>
+        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/VBA">VBA</a>
+        <ul>
+          <li><strong>ResizeImageTo70Percent</strong></li>
+          <p>With one shortcut, resizes images to 70% of the line width. Subsequent centering.</p>
+          <li><strong>unicode-list</strong></li>
+          <p>Opens a customizable window with commonly used unicodes.</p>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/workflow">workflow</a>
+        <ul>
+          <li><strong>ToggleWiFi</strong></li>
+          <p>With one shortcut, toggle on / off WiFi to preserve battery lifetime.</p>
+        </ul>
+      </li>
+    </ul>
+  </main>
+
+  <footer></footer>
 </body>
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create eps3 from svg files</title>
+
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+  <header id="top">
+
+    <h1>
+      <span>Create eps (level 3) from svg</span>
+      <span class="subheader">for LaTeX chemnum package</span>
+    </h1>
+    <div class="categorization">
+      <dl style="display: flex; column-gap: 0.25rem;">
+        <dt>Published under</dt>
+        <dd>General</dd>
+        <dt>on</dt>
+        <dd><time>19.02.2026</time></dd>
+      </dl>
+    </div>
+
+    <nav aria-label="table-of-contents">
+      <p>Table of Contents</p>
+      <ul>
+        <li><a href="#terminal-with-inkscape">EPS Level 3</a></li>
+        <li><a href="#automation-with-python">Automation with python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+
+      <a href="#top" class="toplink">top</a>
+      
+      <section>
+        <p>Imagine this oddly specific scenario: As an (an)organic chemist, you are trying to write your thesis / lab report in LaTeX. Since you worked with a lot of molecules, numbering your chemical compounds has grown quite tedious. On your quest to save your sanity, you stumbled upon the <a href="https://ctan.org/pkg/chemnum">chemnum</a> package. After saving your compounds (which you have drawn in ChemDraw) as EPS files, you followed the documentation to your needs.</p>
+        <p>With the cloud-based editor <a href="https://www.overleaf.com/">overleaf</a>, you encounter no problems. The next time, you switch to your favorite IDE of choice VSCode and... the package doesn't work? To troubleshoot, you again refer to the documentation for chemnum and under the section "8 Replacing Tags in eps or ps Files", you see this snippet:</p>
+        <blockquote cite="https://ftp.rrze.uni-erlangen.de/ctan/macros/latex/contrib/chemnum/chemnum_en.pdf#section.8">
+          "For the actual replacement please make sure that you compile with <code>shell-escape</code> enabled. If you compile with <code>pdflatex</code> you probably also need auto-pst-pdf [RG09] loaded. In subsequent runs load it with option <code>off</code> when you turned off <code>shell-escape</code>."
+        </blockquote>
+        <p>This was something, that overleaf handled for you automatically. Even after following each step, the code <em>still</em> doesn't work. My guess is that ChemDraw saves as EPS level 2, while you need level 3.</p>
+      </section>
+
+
+      
+      <section>
+        <h2 id="terminal-with-inkscape">EPS level 3 from the terminal with Inkscape</h2>
+        <p>You will just need the following software/skills:</p>
+        <ol>
+          <li>Inkscape (necessary, but free)</li>
+          <li>Basic understanding of paths and the terminal (nice to have)</li>
+        </ol>
+        <p>One solution to get EPS level 3 file formats would be to paste the compound into your graphics program of choice and export from there. The following will discuss the Free and open source vector graphics editor <strong>Inkscape</strong> (Illustrator may work too). While this method works, a faster way would be to use the command line.</p>
+        <p>First, we will save the compounds made in ChemDraw as an SVG file. This will be converted to EPS with a simple command. As per the <a href="https://inkscape.org/doc/inkscape-man.html">documentation</a>, this may be achieved with the following example:</p>
+        <pre><code>
+          inkscape --export-filename=[filename_out].eps [filename_in].svg
+        </code></pre>
+        
+        <aside>
+          <details>
+            <summary>
+              Depending on where you saved your inkscape application, you may get an error like this:
+              <pre><code>
+                -bash: illustrator: command not found
+              </code></pre>
+            </summary>
+
+            <p>If you have saved the application in the <code>Applications</code> folder, then you can replace the command <code>inkscape</code> with the full pathname:</p>
+            <pre><code>
+              /Applications/Inkscape.app/Contents/MacOS/inkscape
+                  --export-filename=[filename_out].eps [filename_in].svg
+            </code></pre>
+            <p>Since this is quite tedious to type out, I recommend to <strong>set up a path variable</strong>. For this, go to your "/Users" folder in Finder (can be done with <code>"Cmd+Shift+G"</code> and typing the folder name). Then click on your username (with the house icon). Here, search for the document called <code>".bash_profile"</code>. The dot <code>"."</code> at the beginning of the filename indicates, that the document is hidden by default. First, you will have to display it with the shortcut <code>"Cmd+Shift+."</code>. Then, insert the following line:</p>
+            <pre><code>
+              export PATH="/Applications/Inkscape.app/Contents/MacOS:${PATH}"
+            </code></pre>
+          
+            <p>To update <code>".bash_profile"</code>, you either type <code>source ~/.bash_profile</code> into the terminal or open up a new terminal. Now, everytime you use the inkscape command, the terminal will always use the full pathname. The output file will now be compatible with the chemnum package for your LaTeX session.</p>
+          </details>
+        </aside>
+      </section>
+
+
+
+      <section>
+        <h2 id="automation-with-python">Automation with python</h2>
+        <p>Since you will handle a plethora of compounds, I wrote a short (and probably amateurish), but useful python script. You can find it below or on my GitHub <a href="https://github.com/khang-mol/Automation-scripts/tree/master/">here</a>.</p>
+        <pre><code>
+          #!/usr/local/bin/python3
+          # svg2eps.py (script name)
+          import subprocess
+          import pathlib
+          def main():
+              file_path = pathlib.Path.cwd()
+              # rglob for including subdirectories
+              for file in file_path.glob('*.svg'):
+                  filename = pathlib.Path(file).stem
+                  subprocess.run(['inkscape', '--export-filename='
+                      + f'{filename}.eps', f'{filename}.svg'])
+        
+          if __name__ == '__main__':
+              main()
+        </code></pre>
+        <p>The script takes the current path of your terminal session, searches for every file with the <code>.svg</code> extension and runs inkscape to convert them into <code>.eps</code> files. Save the script wherever you want like a dedicated scripts folder (just better not change it) and create a path variable again for convenience. To get the full path, select a folder in Finder and press <code>"Cmd+alt+c"</code>. As an example:</p>
+        <pre><code>
+          export PATH="[full_path_to_folder_with_svg_files]:${PATH}"
+        </code></pre>
+        <p>This should also make sure, that all your future scripts inside this folder have a shortened command.</p>
+        <aside>
+          <details>
+            <summary>
+              If you type <code>ls -l</code> into your command line inside your script folder, you may get this for your script: <code>-rw-r--r--</code>.
+            </summary>
+            <p>
+              So don't forget to make your scripts executable with the command <code>'chmod'</code> (change mode) onto <code>'u+x'</code>, which instructs the system to give the user (u) execute (x) permissions for a file.
+            </p>
+            <pre><code>
+              chmod u+x svg2eps.py
+            </code></pre>
+            <p>
+              <code>ls -l</code> in your command line should now give <code>-rwxr-xr-x</code> as a result.
+            </p>
+          </details>
+        </aside>
+        <p>Change your directory into your folder with all your SVG files you want to convert. Now simply type in</p>
+        <pre><code>
+          python svg2eps.py
+        </code></pre>
+        <p>and all your SVG files inside your current folder should be converted to EPS level 3 files, ready to be used with chemnum! But then you realize that the package is no longer maintained and you should have just used Word for organic chemistry in the first place...</p>
+      </section>
+    </article>
+  </main>
+  
+
+
+  <script>
+    document.body.classList.add("light");
+    
+    // Not necessary anymore with dedent()
+    // const code = document.querySelectorAll("pre code");
+    // [...code].forEach(element => element.textContent = element.textContent.replace(/^\n/,''));
+
+    function dedent(str) {
+      const lines = str.split('\n');
+
+      // Remove empty lines at start/end
+      while (lines.length && lines[0].trim() === '') lines.shift();
+      while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
+
+      // Find minimum indentation
+      // const indentLengths = lines
+      //   .filter(line => line.trim() !== '') // ignore empty lines
+      //   .map(line => line.match(/^\s*/)[0].length);
+      // const minIndent = Math.min(...indentLengths);
+      const minIndent = lines[0].match(/^\s+/)[0].length;
+
+      // Remove minIndent spaces from start of each line
+      const dedented = lines.map(line => line.slice(minIndent)).join('\n');
+
+      return dedented;
+    };
+              
+    const codeElement = document.querySelectorAll('pre code');
+    [...codeElement].forEach(element => element.textContent = dedent(element.textContent));
+  </script>
+</body>
+</html>

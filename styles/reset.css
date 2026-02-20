@@ -1,0 +1,50 @@
+/* Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+/* currently not supported https://www.joshwcomeau.com/css/custom-css-reset/ */
+/* @media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+} */
+
+body {
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping, apparently resource expensive */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* Root stacking context as replacement for z-index (if I use JS framework) */
+#root, #__next {
+  isolation: isolate;
+}
