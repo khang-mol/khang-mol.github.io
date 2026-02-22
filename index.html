@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Molybdenum42</title>
+  <title>Molybdenum42 - website</title>
   
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/index.css">
@@ -14,15 +14,17 @@
   <main>
     <h1>My website</h1>
     <h2>Blogs & Articles</h2>
-    <article>
-      <h4><a href="./blogs/set_up_paths.html">How to set up Paths in MacOS</a></h4>
-      <p>Learn how to shorten terminal commands and paths. Useful for automation.</p>
-    </article>
-
-    <article>
-      <h4><a href="./blogs/eps3_from_svg.html">Create .eps (level 3) files from .svg</a></h4>
-      <p>Specifically useful, when an application only saves as <abbr title="Encapsulated PostScript">.eps</abbr> (level 2) like ChemDraw. Useful for IDEs (e.g. VSCode) without implicit conversion (e.g. Overleaf).</p>
-    </article>
+    <div class="blog-container"></div>
+    
+    <template class="blog-template">
+      <article>
+        <a class="blog-link">
+          <h4 class="blog-title"></h4>
+        </a>
+        <p class="blog-content"></p>
+      </article>
+    </template>
+    
     
     <h2>Projects</h2>
 
@@ -61,7 +63,7 @@
           <p>Opens a customizable window with commonly used unicodes.</p>
         </ul>
       </li>
-      
+
       <li>
         <a href="https://github.com/khang-mol/Automation-scripts/tree/master/workflow">workflow</a>
         <ul>
@@ -73,5 +75,7 @@
   </main>
 
   <footer></footer>
+
+  <script src="blogTemplate.js"></script>
 </body>
 </html>

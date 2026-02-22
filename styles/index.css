@@ -87,7 +87,7 @@ blockquote {
   margin-left: 16px;
 }
 
-h4 + p {
+.blog-content {
   margin-top: 0;
 }
 
