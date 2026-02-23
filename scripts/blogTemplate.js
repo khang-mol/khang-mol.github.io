@@ -9,15 +9,15 @@ const blogData = [{
 }
 ];
 
-const blogContainer = document.querySelector(".blog-container");
-const blogTemplate = document.querySelector(".blog-template");
+const blogContainer = document.querySelector(".js-blog-container");
+const blogTemplate = document.querySelector(".js-blog-template");
 
 blogData.forEach(news => {
   const clone = blogTemplate.content.cloneNode(true);
-  const blogTitle = clone.querySelector(".blog-title");
+  const blogTitle = clone.querySelector(".js-blog-title");
   blogTitle.textContent = news.title;
-  clone.querySelector(".blog-link").href = news.href;
+  clone.querySelector(".js-blog-link").href = news.href;
 
-  clone.querySelector(".blog-content").textContent = news.content;
+  clone.querySelector(".js-blog-content").textContent = news.content;
   blogContainer.appendChild(clone);
 });

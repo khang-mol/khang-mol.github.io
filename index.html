@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Molybdenum42 - website</title>
   
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
   <header></header>
@@ -14,14 +14,16 @@
   <main>
     <h1>My website</h1>
     <h2>Blogs & Articles</h2>
-    <div class="blog-container"></div>
+    <div class="js-blog-container"></div>
     
-    <template class="blog-template">
+    <template class="js-blog-template">
       <article>
-        <a class="blog-link">
-          <h4 class="blog-title"></h4>
+        <a class="js-blog-link">
+          <strong>
+            <p class="blog-title js-blog-title"></p>
+          </strong>
         </a>
-        <p class="blog-content"></p>
+        <p class="blog-content js-blog-content"></p>
       </article>
     </template>
     
@@ -76,6 +78,6 @@
 
   <footer></footer>
 
-  <script src="blogTemplate.js"></script>
+  <script src="./scripts/blogTemplate.js"></script>
 </body>
 </html>
