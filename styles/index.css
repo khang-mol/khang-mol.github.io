@@ -94,6 +94,7 @@ pre > code {
 
 code {
   background-color: var(--bg-code);
+  color: var(--text);
 }
 
 details {

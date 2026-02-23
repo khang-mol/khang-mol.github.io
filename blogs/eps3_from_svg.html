@@ -7,48 +7,22 @@
   <meta http-equiv="refresh" content="86400">
   <meta name="author" content="Molybdenum42">
   <title>EPS level 3 from SVG files</title>
-  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
 
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/index.css">
 
-  <script src="../scripts/components/header.js" type="text/javascript" defer></script>
+  <script src="../scripts/components/allComponents.js" type="module" defer></script>
 </head>
 <body>
   <header-component>
+    <span slot="h1-heading">Create .eps (Level 3) from .svg</span>
+    <span slot="subheading">for LaTeX chemnum package</span>
     <span slot="category-slot">Automation</span>
     <span slot="publication-date">19.02.2026</span>
     <span slot="updated-date">22.02.2026</span>
   </header-component>
   
-  <!-- <header id="top">
-    <h1>
-      <span>Create eps (level 3) from svg</span>
-      <span class="subheader">for LaTeX chemnum package</span>
-    </h1>
-    <div class="categorization">
-      <dl style="display: flex; column-gap: 0.25rem;">
-        <dt>Published under</dt>
-        <dd>General</dd>
-        <dt>on</dt>
-        <dd><time>19.02.2026</time></dd>
-      </dl>
-      <dl style="display: flex; column-gap: 0.25rem;">
-        <dt>Last updated</dt>
-        <dt>on</dt>
-        <dd><time>22.02.2026</time></dd>
-      </dl>
-    </div>
-
-    <nav aria-label="table-of-contents">
-      <p>Table of Contents</p>
-      <ul>
-        <li><a href="#terminal-with-inkscape">EPS Level 3</a></li>
-        <li><a href="#automation-with-python">Automation with python</a></li>
-      </ul>
-    </nav>
-  </header> -->
-
   <main>
     <article>
 
@@ -155,35 +129,6 @@
 
 
 
-  <script>
-    document.body.classList.add("light");
-    
-    // Not necessary anymore with dedent()
-    // const code = document.querySelectorAll("pre code");
-    // [...code].forEach(element => element.textContent = element.textContent.replace(/^\n/,''));
-
-    function dedent(str) {
-      const lines = str.split('\n');
-
-      // Remove empty lines at start/end
-      while (lines.length && lines[0].trim() === '') lines.shift();
-      while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
-
-      // Find minimum indentation
-      // const indentLengths = lines
-      //   .filter(line => line.trim() !== '') // ignore empty lines
-      //   .map(line => line.match(/^\s*/)[0].length);
-      // const minIndent = Math.min(...indentLengths);
-      const minIndent = lines[0].match(/^\s+/)[0].length;
-
-      // Remove minIndent spaces from start of each line
-      const dedented = lines.map(line => line.slice(minIndent)).join('\n');
-
-      return dedented;
-    };
-              
-    const codeElement = document.querySelectorAll('pre code');
-    [...codeElement].forEach(element => element.textContent = dedent(element.textContent));
-  </script>
+  <script></script>
 </body>
 </html>
