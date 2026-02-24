@@ -1,6 +1,4 @@
 export function styleCodeblock() {
-  // document.body.classList.add("light");
-      
   // Not necessary anymore with dedent()
   // const code = document.querySelectorAll("pre code");
   // [...code].forEach(element => element.textContent = element.textContent.replace(/^\n/,''));

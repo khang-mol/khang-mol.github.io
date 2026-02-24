@@ -9,74 +9,70 @@
   <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-  <header></header>
-  
-  <main>
-    <h1>My website</h1>
-    <h2>Blogs & Articles</h2>
-    <div class="js-blog-container"></div>
+  <div class="body-container">
+    <header></header>
     
-    <template class="js-blog-template">
-      <article>
-        <a class="js-blog-link">
-          <strong>
-            <p class="blog-title js-blog-title"></p>
-          </strong>
-        </a>
-        <p class="blog-content js-blog-content"></p>
-      </article>
-    </template>
+    <main>
+      <h1>My website</h1>
+      <h2>Blogs & Articles</h2>
+      <div class="js-blog-container"></div>
     
-    
-    <h2>Projects</h2>
-
-    <h3>JavaScript</h3>
-    <p>
-      Fully functional <a href="https://khang-mol.github.io/Hangman/">Hangman</a> game featuring 8 categories. Minimalist but still more intricate CSS (<a href="https://github.com/khang-mol/Hangman" title="Link to GitHub project">GitHub</a>).
-    </p>
-    <h3>Python</h3>
-    <p>
-      Rudimentary IMDb episode ratings web scraper, which returns the episode ratings as an array (the whole series) of arrays (each season) (<a href="https://github.com/khang-mol/IMDb-web-scraper" title="Link to GitHub project">GitHub</a>).
-    </p>
+      <template class="js-blog-template">
+        <article>
+          <a class="js-blog-link">
+            <strong>
+              <p class="blog-title js-blog-title"></p>
+            </strong>
+          </a>
+          <p class="blog-content js-blog-content"></p>
+        </article>
+      </template>
     
     
-
-    <h2>Automation-scripts</h2>
+      <h2>Projects</h2>
+      <h3>JavaScript</h3>
+      <p>
+        Fully functional <a href="https://khang-mol.github.io/Hangman/">Hangman</a> game featuring 8 categories. Minimalist but still more intricate CSS (<a href="https://github.com/khang-mol/Hangman" title="Link to GitHub project">GitHub</a>).
+      </p>
+      <h3>Python</h3>
+      <p>
+        Rudimentary IMDb episode ratings web scraper, which returns the episode ratings as an array (the whole series) of arrays (each season) (<a href="https://github.com/khang-mol/IMDb-web-scraper" title="Link to GitHub project">GitHub</a>).
+      </p>
     
-    <p>
-      Scripts for automating mundane tasks. All code can be found <a href="https://github.com/khang-mol/Automation-scripts">here</a>.
-    </p>
-
-    <ul>
-      <li>
-        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/python">python</a>
-        <ul>
-          <li><strong>svg2eps</strong></li>
-          <p>Transforms .svg into .eps (version 3). Useful for the chemnum package in LaTeX, if the IDE features no implicit conversion.</p>
-        </ul>
-      </li>
-
-      <li>
-        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/VBA">VBA</a>
-        <ul>
-          <li><strong>ResizeImageTo70Percent</strong></li>
-          <p>With one shortcut, resizes images to 70% of the line width. Subsequent centering.</p>
-          <li><strong>unicode-list</strong></li>
-          <p>Opens a customizable window with commonly used unicodes.</p>
-        </ul>
-      </li>
-
-      <li>
-        <a href="https://github.com/khang-mol/Automation-scripts/tree/master/workflow">workflow</a>
-        <ul>
-          <li><strong>ToggleWiFi</strong></li>
-          <p>With one shortcut, toggle on / off WiFi to preserve battery lifetime.</p>
-        </ul>
-      </li>
-    </ul>
-  </main>
-
-  <footer></footer>
+    
+      <h2>Automation-scripts</h2>
+    
+      <p>
+        Scripts for automating mundane tasks. All code can be found <a href="https://github.com/khang-mol/Automation-scripts">here</a>.
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/khang-mol/Automation-scripts/tree/master/python">python</a>
+          <ul>
+            <li><strong>svg2eps</strong></li>
+            <p>Transforms .svg into .eps (version 3). Useful for the chemnum package in LaTeX, if the IDE features no implicit conversion.</p>
+          </ul>
+        </li>
+        <li>
+          <a href="https://github.com/khang-mol/Automation-scripts/tree/master/VBA">VBA</a>
+          <ul>
+            <li><strong>ResizeImageTo70Percent</strong></li>
+            <p>With one shortcut, resizes images to 70% of the line width. Subsequent centering.</p>
+            <li><strong>unicode-list</strong></li>
+            <p>Opens a customizable window with commonly used unicodes.</p>
+          </ul>
+        </li>
+        <li>
+          <a href="https://github.com/khang-mol/Automation-scripts/tree/master/workflow">workflow</a>
+          <ul>
+            <li><strong>ToggleWiFi</strong></li>
+            <p>With one shortcut, toggle on / off WiFi to preserve battery lifetime.</p>
+          </ul>
+        </li>
+      </ul>
+    </main>
+    <footer></footer>
+  </div>
 
   <script src="./scripts/blogTemplate.js"></script>
 </body>

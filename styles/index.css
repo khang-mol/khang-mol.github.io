@@ -20,7 +20,8 @@
   --primary-color--hover: rgba(4, 87, 102, 0.9);
   --primary-color--active: rgba(4, 87, 102, 0.6);
   --primary-white: rgb(240, 240, 240);
-  --nav--height: 3rem;
+
+  --nav--height: 48px;
 }
 body.light {
   --bg-dark: hsl(var(--color-hue), var(--color-saturation), 90%);
@@ -41,9 +42,17 @@ body.light {
             0px 4px 4px hsla(0, 0%, 0%, 0.15);
 }
 
+:target {
+  scroll-margin-top: calc(var(--nav--height) + 1rem);
+}
+
 body {
+  /* scroll bar is then black, idk why it doesn't work inside .body-container */
   background: var(--bg-dark);
   color: var(--text);
+}
+
+.body-container {
   padding: 8px;
 }
 
@@ -78,6 +87,8 @@ body.light p {
 }
 blockquote {
   margin-left: 16px;
+  border-left: 4px solid var(--bg-code);
+  padding-left: 8px;
 }
 
 .blog-content {
@@ -91,10 +102,14 @@ pre > code {
   display: block;
   padding: 4px;
 }
+pre {
+  overflow-x: auto;
+}
 
 code {
   background-color: var(--bg-code);
   color: var(--text);
+  font-size: 0.875rem;
 }
 
 details {
@@ -102,15 +117,22 @@ details {
   padding: 8px;
 }
 
-/* a:link {
+a:link {
   color: hsla(200, 80%, 60%, 0.9);
 }
 a:visited {
   color: hsla(200, 80%, 40%, 0.5);
-} */
+}
 
 ul > li + p {
   margin-top: 0;
+}
+
+.site {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .toplink {
@@ -119,6 +141,43 @@ ul > li + p {
   right: 32px;
   background-color: hsla(0, 0%, 60%, 0.4);
   padding: 4px;
+}
+
+.primary-navigation {
+  background-color: var(--bg-light);
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+.navbar__button-default {
+  height: var(--nav--height);
+  width: var(--nav--height);
+  background-color: var(--bg-light);
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+}
+.navbar__button-default:hover {
+  background-color: var(--bg);
+}
+.dark-mode-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dark-mode-toggler svg:last-child {
+  display: none;
+}
+body.light .dark-mode-toggler svg:first-child {
+  display: none;
+}
+body.light .dark-mode-toggler svg:last-child {
+  display: block;
+}
+svg {
+  fill: var(--text);
+  pointer-events: none;
 }
 
 .blog-title {
