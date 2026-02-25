@@ -183,3 +183,14 @@ svg {
 .blog-title {
   color: inherit;
 }
+
+footer {
+  /* grid-area: footer; */
+  background-color: var(--bg);
+  color: var(--text-muted);
+  /* height: auto; */
+  /* display: flex;
+  align-items: center; */
+  margin-top: 1rem;
+  padding: 8px;
+}

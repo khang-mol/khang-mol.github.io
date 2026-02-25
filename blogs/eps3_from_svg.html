@@ -9,10 +9,10 @@
   <title>EPS level 3 from SVG files</title>
   <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
 
-  <link rel="stylesheet" href="../styles/reset.css">
-  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/index.css">
 
-  <script src="../scripts/components/allComponents.js" type="module" defer></script>
+  <script src="/scripts/components/allComponents.js" type="module" defer></script>
 </head>
 <body>
   <nav class="primary-navigation" aria-label="primary-navigation"></nav>
@@ -22,16 +22,14 @@
       <header-component>
         <span slot="h1-heading">Create .eps (Level 3) from .svg</span>
         <span slot="subheading">for LaTeX chemnum package</span>
-        <span slot="category-slot">Automation</span>
+        <span slot="category-slot">General</span>
         <span slot="publication-date">19.02.2026</span>
-        <span slot="updated-date">22.02.2026</span>
+        <span slot="updated-date">24.02.2026</span>
       </header-component>
     </header>
     
     <main>
       <article>
-        <a href="#top" class="toplink">top</a>
-    
         <section>
           <p>Imagine this oddly specific scenario: As an (an)organic chemist, you are trying to write your thesis / lab report in LaTeX. Since you worked with a lot of molecules, numbering your chemical compounds has grown quite tedious. On your quest to save your sanity, you stumbled upon the <a href="https://ctan.org/pkg/chemnum">chemnum</a> package. After saving your compounds (which you have drawn in ChemDraw) as EPS files, you followed the documentation to your needs.</p>
           <p>With the cloud-based editor <a href="https://www.overleaf.com/">overleaf</a>, you encounter no problems. The next time, you switch to your favorite IDE of choice VSCode and... the package doesn't work? To troubleshoot, you again refer to the documentation for chemnum and under the section "8 Replacing Tags in eps or ps Files", you see this snippet:</p>
@@ -43,6 +41,7 @@
           </figure>
           <p>This was something, that overleaf handled for you automatically. Even after following each step, the code <em>still</em> doesn't work. My guess is that ChemDraw saves as EPS level 2, while you need level 3.</p>
         </section>
+
     
         <section>
           <h2 id="terminal-with-inkscape">EPS level 3 from the terminal with Inkscape</h2>
@@ -79,6 +78,8 @@
             </details>
           </aside>
         </section>
+
+
         <section>
           <h2 id="automation-with-python">Automation with python</h2>
           <p>Since you will handle a plethora of compounds, I wrote a short (and probably amateurish), but useful python script. You can find it below or on my GitHub <a href="https://github.com/khang-mol/Automation-scripts/tree/master/">here</a>.</p>
@@ -127,8 +128,8 @@
         </section>
       </article>
     </main>
-
-    <footer>footer</footer>
   </div>
+
+  <footer></footer>
 </body>
 </html>

@@ -1,0 +1,11 @@
+:target {
+  scroll-margin-top: calc(var(--nav--height) + 1rem);
+}
+
+.toplink {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background-color: hsla(0, 0%, 60%, 0.4);
+  padding: 4px;
+}

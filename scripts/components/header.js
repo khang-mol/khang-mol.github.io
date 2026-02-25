@@ -10,6 +10,8 @@ export function renderHeader() {
   function renderNavbar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
     primaryNavigation.innerHTML = `
+      <a href="#top" class="toplink">top</a>
+    
       <a href="/index.html" style="margin-left: 16px;">Home</a>
 
       <div style="flex: 1;"></div>
@@ -126,11 +128,14 @@ export function renderHeader() {
   customElements.define("header-component", Header);
   
   
-  const headerComponent = document.querySelector("header-component");
-  const headerShadowRoot = headerComponent.shadowRoot;
   
+  const headerComponent = document.querySelector("header-component");
+  if (headerComponent) {
+    renderTableOfContents();
+  };
   
   function renderTableOfContents() {
+    const headerShadowRoot = headerComponent.shadowRoot;
     const tableOfContents = headerShadowRoot.querySelector(".table-of-contents");
     const h2Headings = document.querySelectorAll("h2");
     h2Headings.forEach(heading => {
@@ -143,5 +148,14 @@ export function renderHeader() {
     });
   };
   
-  renderTableOfContents();
+
+
+  function renderFooter() {
+    const footer = document.querySelector("footer");
+    footer.innerHTML = `
+      @Molybdenum42, 2026 
+      (<a href="https://github.com/khang-mol" target="_blank">GitHub</a>)
+    `;
+  };
+  renderFooter();
 };
