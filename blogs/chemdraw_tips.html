@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesser known Chemdraw tips inside and outside the application">
+  <meta name="author" content="Molybdenum42">
+  <title>(Lesser known) Chemdraw tips</title>
+  <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/index.css">
+
+  <script type="module" src="/scripts/components/allComponents.js" defer></script>
+</head>
+<body>
+  <nav class="primary-navigation" aria-label="primary-navigation"></nav>
+
+  <div class="site body-container">
+    <header>
+      <header-component>
+        <span slot="h1-heading">(A few lesser known) Chemdraw tips</span>
+        <span slot="subheading">Boost your chemistry workflow</span>
+        <span slot="category-slot">Chemistry</span>
+        <span slot="publication-date">25.02.2026</span>
+        <span slot="updated-date">25.02.2026</span>
+      </header-component>
+    </header>
+
+    <main>
+      <article>
+        <section>
+          <p>(Work in progress.)</p>
+          <p>As a general rule of thumb, your workflow with Chemdraw (or any other software for that matter) should increase in speed the less you rely on your mouse and the more you utilize the keyboard. The following will show you some tips to boost your productivity. (Since I use MacOS, I will talk about the "Command" (<code>"Cmd"</code>) key. Generally, Windows will use the "Control" key instead.)</p>
+        </section>
+
+        <section>
+          <h2 id="chemdraw-tips-ui">Tips inside the user interface</h2>
+          <p>Here I will discuss some tips you can do when interacting solely through your user interface (UI). No coding-like knowdledge is needed.</p>
+
+          <h3>Magic Hotkeys Cheat Sheet</h3>
+          <p>This is a must have which you probably already knew. Click "Help" in the Menu Bar at the top of your screen and go to "Shortcuts and Hotkeys".</p>
+
+          <h3>More Elaborate Cheat Sheet</h3>
+          <p>To take this one step further, a more elaborate Cheat Sheet can be found <a href="https://revvitysignals.com/sites/default/files/2025-01/rs-ebook-ChemDraw-Tips-and-Tricks%20%282%29.pdf">here</a>. It includes Shortcuts for aligning objects, cleaning up or joining structures, 3D clean-ups and more.</p>
+
+          <h3>Automatic Chemical Formula Style</h3>
+          <p>When you type chemical formulae with the text tool, you need subscripts and superscripts. A known method to apply these is by selecting the "Formula" button (or by pressing <code>"Cmd + F"</code>) as shown in the picture below.</p>
+
+          <figure>
+            <img src="https://ik.imagekit.io/molybdenum42/Chemdraw_Formula_Command.png" alt="Chemdraw Formula Command" loading="lazy">
+          </figure>
+
+          <p>If you want this option as the default, go to <code>"File" > "Document Settings..." > "Text Captions"</code>. In the Section <code>"Baseline Style</code>, click <code>"Formula"</code> and then <code>"Ok"</code>.</p>
+        </section>
+
+        <section>
+          <h2 id="chemdraw-tips-advanced">More advanced tips</h2>
+          <p>These tips will involve more than the UI. While no knowdledge of coding is necessary, it will certainly help.</p>
+
+          <h3>Create new hotkeys/shortcuts via Settings (MacOS)</h3>
+          <p>Click the Apple symbol in the top left corner and then "System Settings" (old: "System Preferences..."). In the sidebar, go to "Keyboard" > "Shortcuts" (or similar). While the image below is from an older MacOS version, you should get a window similar to this:</p>
+
+          <figure>
+            <!-- ffmpeg -i imageName.jpg -vf scale=20:-1 imageName-small.jpg -->
+            <div class="blur-load" style="background-image: url(./images/App_shortcuts-small.png);"></div>
+            <!-- <img src="./images/App_shortcuts.png" loading="lazy"> -->
+            <img src="https://ik.imagekit.io/molybdenum42/App_shortcuts.png" alt="App Shortcuts" loading="lazy">
+            <figcaption>Create New App Shortcuts.</figcaption>
+          </figure>
+
+          <p>Select "App Shortcuts" on the left, click on the <code>"+"</code> symbol, then choose your specific Application (i.e. Chemdraw). Inside "Menu Title", enter the exact name of the menu command you want to add, including elipses (...) or similar. Every thing that is highlighted on your way to the command should be connected with <code>"->"</code>. For the example below, I chose the command to distribute your selected objects horizontally. Since your need to hover over "Object", then "Distribute" and finally "Horizontally", the line that you should type in "Menu Title" is <code>"Object->Distribute->Horizontally"</code>. Finally, assign a convenient Keyboard Shortcut of your choice. Just make sure, that it doesn't conflict with another Shortcut. To remove a Shortcut, click on the <code>"−"</code> symbol.</p>
+          
+          <figure>
+            <div class="blur-load" style="background-image: url(./images/Chemdraw_Distribute_Horizontally-small.png);"></div>
+            <img src="https://ik.imagekit.io/molybdenum42/Chemdraw_Distribute_Horizontally.png" alt="Command from Chemdraw UI" loading="lazy">
+          </figure>
+
+          
+          
+          <h3>Create new hotkeys/shortcuts via xml</h3>
+
+          <p>To create molecules in 3D, I like to incorporate the tool in the picture below into my workflow. First, select the "3DTrackball" tool highlighted by the orange arrow. Then, select the parts of the structure I want to change the perspective of (for multiple selections, press <code>"Shift"</code> while dragging with the mouse). Drag with your mouse until you are satisfied (press <code>"Alt+Shift"</code> to keep things steady). Add/Remove substituents and finally rotate to get part of your final product. That is how I managed to draw the commonly referenced drug vancomycin.</p>
+          
+          <figure>
+            <div class="blur-load" style="background-image: url(./images/Chemdraw_3DTrackball-small.png);"></div>
+            <img src="https://ik.imagekit.io/molybdenum42/Chemdraw_3DTrackball.png" alt="Chemdraw 3DTrackball" loading="lazy">
+          </figu>
+
+          <p>Since I use that tool on a semi-regular basis, I assigned a hotkey (<code>";"</code>) to it, to avoid using the mouse unnecessarily. As far as I know, the tool cannot be selected from the Menu Bar (the navigation bar on the very top). Therefore, we have to mingle with the hotkeys file itself. As such, go to the following path (if default installation):</p>
+
+          <pre><code>
+            /Applications/ChemDraw 20.0.app/Contents/Resources/SpecialPurpose/ChemDraw Items
+          </code></pre>
+
+          <p>To save time, press <code>"Command+Shift+G"</code> in Finder and paste in the full pathname (I use Chemdraw 20.0 but you should obviously use your version). Locate the file called "hotkeys.xml" and open it. We will insert some lines (I advise you to first make a backup copy of the file in case something gets messed up). Scroll to the bottom until you reach the  <code>&lt;Object type="Generic"></code> tag. Inside the <code>&lt;Hotkeys></code> tag, insert a new tag. According to the <a href="https://chem.beloit.edu/classes/programs/ChemDraw_21_manual.pdf#%5B%7B%22num%22%3A21%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C75%2C661.5%2C0%5D" title="Chemdraw Manual">Chemdraw manual</a>, you should have the following:</p>
+
+          <pre><code>
+            &lt;Object type=&quot;Generic&quot;&gt;
+              ...
+              &lt;Hotkeys&gt;
+                ...
+                &lt;Hotkey key=&quot;;&quot; command=&quot;TOOLMODE&quot; value=&quot;3DTRACKBALL&quot; description=&quot;Activates the Structure Perspective tool&quot;/&gt;
+              &lt;/Hotkeys&gt;
+            &lt;/Object&gt;
+          </code></pre>
+
+          <p>Now whenever you did not select anything and press <code>";"</code>, you will select the "Structure Perspective" Tool.</p>
+        </section>
+
+      </article>
+    </main>
+  </div>
+  <footer></footer>
+</body>
+</html>

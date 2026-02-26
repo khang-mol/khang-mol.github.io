@@ -1,12 +1,19 @@
-const blogData = [{ 
-  title: "How to set up Paths in MacOS",
-  content: "Learn how to shorten terminal commands and paths. Useful for automation.",
-  href: "./blogs/set_up_paths.html"
-}, { 
-  title: "Create .eps (level 3) files from .svg", 
-  content: "Specifically useful, when an application only saves as .eps (level 2) like ChemDraw. Useful for IDEs (e.g. VSCode) without implicit conversion (e.g. Overleaf). Used for LaTeX chemnum package.",
-  href: "./blogs/eps3_from_svg.html"
-}
+const blogData = [
+  { 
+    title: "Create .eps (level 3) files from .svg", 
+    content: "Specifically useful, when an application only saves as .eps (level 2) like ChemDraw. Useful for IDEs (e.g. VSCode) without implicit conversion (e.g. Overleaf). Used for LaTeX chemnum package.",
+    href: "./blogs/eps3_from_svg.html"
+  },
+  {
+    title: "Chemdraw: Lesser known tips",
+    content: "Here I present lesser known tips inside and outside the actual application.",
+    href: "./blogs/chemdraw_tips.html",
+  },
+  // {
+  //   title: "How to set up Paths in MacOS",
+  //   content: "Learn how to shorten terminal commands and paths. Useful for automation.",
+  //   href: "./blogs/set_up_paths.html",
+  // },
 ];
 
 const blogContainer = document.querySelector(".js-blog-container");
