@@ -10,9 +10,17 @@ export function renderHeader() {
   function renderNavbar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
     primaryNavigation.innerHTML = `
-      <a href="#top" class="toplink">top</a>
+      <a href="#top" class="toplink" aria-label="go-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg>
+      </a>
     
-      <a href="/index.html" style="margin-left: 16px;">Home</a>
+      <abbr title="Home">
+        <a href="/index.html">
+          <button class="navbar__button-default">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
+          </button>
+        </a>
+      </abbr>
 
       <div style="flex: 1;"></div>
       
@@ -71,11 +79,19 @@ export function renderHeader() {
           flex-direction: column;
           /* justify-content: center; */
           text-align: center;
+          margin-top: 32px;
         }
       
         .subheader {
           font-weight: normal;
           font-size: 1.25rem;
+        }
+
+        .categorization-container {
+          margin-top: 32px;
+        }
+        .categorization {
+          display: flex; column-gap: 0.25rem;
         }
       </style>
       
@@ -87,8 +103,8 @@ export function renderHeader() {
           <slot name="subheading">subheading</slot>
         </span>
       </h1>
-      <div class="categorization">
-        <dl style="display: flex; column-gap: 0.25rem;">
+      <div class="categorization-container">
+        <dl class="categorization">
           <dt>Published under</dt>
           <dd>
             <slot name="category-slot">General</slot>
@@ -98,7 +114,7 @@ export function renderHeader() {
             <slot name="publication-date">2026</slot>
           </time></dd>
         </dl>
-        <dl style="display: flex; column-gap: 0.25rem;">
+        <dl class="categorization">
           <dt>Last updated</dt>
           <dt>on</dt>
           <dd><time>

@@ -60,6 +60,9 @@ body {
   width: min(1000px, 95%);
 }
 
+h1 {
+  margin-top: 32px;
+}
 h2 {
   margin-top: 48px;
 }
@@ -102,7 +105,7 @@ blockquote {
 pre > code {
   white-space: pre;
   width: fit-content;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0 1rem 0;
   display: block;
   padding: 4px;
 }
@@ -123,6 +126,7 @@ img {
 details {
   background-color: hsla(200, 80%, 35%, 0.5);
   padding: 8px;
+  margin-top: 16px;
 }
 
 a:link {
@@ -165,6 +169,9 @@ ul > li + p {
   color: var(--text);
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navbar__button-default:hover {
   background-color: var(--bg);

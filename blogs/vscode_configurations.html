@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal VSCode settings, keybindings, snippets.">
+  <meta name="author" content="Molybdenum42">
+  <title>My VSCode configurations</title>
+  <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/index.css">
+
+  <script type="module" src="/scripts/components/allComponents.js" defer></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tomorrow-night-blue.min.css">
+</head>
+<body>
+  <nav class="primary-navigation" aria-label="primary-navigation"></nav>
+
+  <div class="site body-container">
+    <header>
+      <header-component>
+        <span slot="h1-heading">My VSCode configurations</span>
+        <span slot="subheading">Settings, Keybindings, snippets</span>
+        <span slot="category-slot">coding</span>
+        <span slot="publication-date">26.02.2026</span>
+        <span slot="updated-date">26.02.2026</span>
+      </header-component>
+    </header>
+
+    <main>
+      <article>
+        <section>
+          <p>The focus is more towards compiling my settings to one place for personal use. If you learned something nonetheless, I would be quite happy.</p>
+        </section>
+
+        <section>
+          <h2 id="settings">Settings</h2>
+
+          <pre><code>
+            // "settings.json"
+            // Accessible by "shift+cmd+p" then "Preferences: Open User Settings (JSON)"
+            {
+              "code-runner.runInTerminal": true,
+              "update.mode": "none",
+              "editor.acceptSuggestionOnEnter": "off",
+              "editor.acceptSuggestionOnCommitCharacter": false,
+          
+              "[html]":{
+                "editor.tabSize": 2,
+              },
+              "[css]": {
+                "editor.tabSize": 2,
+              },
+              "[javascript]": {
+                "editor.tabSize": 2
+              },
+              "javascript.preferences.importModuleSpecifierEnding": "js",
+              "editor.linkedEditing": true,
+          
+              "workbench.colorCustomizations": {
+                "editorIndentGuide.activeBackground1": "#ffa200"
+              },
+              "editor.guides.bracketPairs": true
+
+              // Insert extra LaTeX stuff here.
+            }
+          </code></pre>
+
+
+          <aside>
+            <details>
+              <summary>
+                If you are curious about the extra LaTeX stuff:
+              </summary>
+              <pre><code>
+                // Extra LaTeX stuff.
+                "latex-workshop.intellisense.citation.backend": "biblatex",
+                "latex-workshop.latex.path": "/Library/TeX/texbin",
+                "latex-workshop.latex.tools": [
+                    // "https://tex.stackexchange.com/questions/598818/how-can-i-enable-shell-escape¸"
+                    {
+                      "name": "latexmk",
+                      "command": "latexmk",
+                      "args": [
+                      "--shell-escape",
+                      "-synctex=1",
+                      "-interaction=nonstopmode",
+                      "-file-line-error",
+                      "-pdf",
+                      "-outdir=%OUTDIR%",
+                      "%DOC%"
+                      ],
+                      "env": {}
+                    },
+                    {
+                      "name": "xelatex",
+                      "command": "xelatex",
+                      "args": [
+                      "--shell-escape",
+                      "-synctex=1",
+                      "-interaction=nonstopmode",
+                      "-file-line-error",
+                      "%DOC%"
+                      ],
+                      "env": {}
+                    },
+                    {
+                      "name": "pdflatex-shell-escape",
+                      "command": "pdflatex",
+                      "args": [
+                      "--shell-escape",
+                      "-synctex=1",
+                      "-interaction=nonstopmode",
+                      "-file-line-error",
+                      "%DOC%"
+                      ],
+                      "env": {}
+                    },
+                    {
+                      "name": "bibtex",
+                      "command": "bibtex",
+                      "args": [
+                      "%DOCFILE%"
+                      ],
+                      "env": {}
+                    },
+                    { // is this whole thing needed?
+                      "name": "biber",
+                      "command": "biber",
+                      "args": [
+                      "%DOCFILE%"
+                      ],
+                      "env": {}
+                    }
+                    ],
+                    "latex-workshop.latex.recipes": [
+                    {
+                      "name": "pdfLaTeX-shell-escape-recipe",
+                      "tools": [
+                      "pdflatex-shell-escape"
+                      ]
+                    },
+                    {
+                      "name": "latexmk 🔃",
+                      "tools": [
+                      "latexmk"
+                      ]
+                    },
+                    {
+                      "name": "xelatex",
+                      "tools": [
+                      "xelatex"
+                      ]
+                    },
+                    {
+                      "name": "pdflatex ➞ biber ➞ pdflatex`×2",
+                      "tools": [
+                      "pdflatex-shell-escape",
+                      "biber",
+                      "pdflatex-shell-escape",
+                      "pdflatex-shell-escape"
+                      ]
+                    },
+                    {
+                    "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+                    "tools": [
+                      "xelatex",
+                      "bibtex",
+                      "xelatex",
+                      "xelatex"
+                      ]
+                    }
+                  ],
+                  "latex-workshop.latex.recipe.default": "lastUsed",
+              </code></pre>
+            </details>
+          </aside>
+        </section>
+
+        <section>
+          <h2 id="keybindings">Keybindings</h2>
+
+          <pre><code class="language-json">
+            // "keybindings.json"
+            // Accessible by "shift+cmd+p" then "Preferences: Open Keyboard Shortcuts (JSON)"
+            // Place your key bindings in this file to override the defaults
+            [
+                {
+                    "key": "ctrl+cmd+up",
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 10,
+                    },
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "ctrl+cmd+down",
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 10,
+                    },
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "cmd+'",
+                    "command": "workbench.action.terminal.toggleTerminal",
+                    "when": "terminal.active"
+                },
+                {
+                    "key": "ctrl+`",
+                    "command": "-workbench.action.terminal.toggleTerminal",
+                    "when": "terminal.active"
+                }, // useless now
+                {
+                    "key":     "cmd+'",
+                    "command": "workbench.action.focusActiveEditorGroup",
+                    "when":    "terminalFocus"
+                },
+                {
+                    "key": "shift+alt+z",
+                    "command": "zoterolatex.addCitation",
+                    "when": "editorTextFocus && editorLangId == 'latex'"
+                },
+                {
+                    "key": "alt+z",
+                    "command": "-zoterolatex.addCitation",
+                    "when": "editorTextFocus && editorLangId == 'latex'"
+                },
+                {
+                    "key": "cmd+l cmd+l",
+                    "command": "expandLineSelection",
+                    "when": "textInputFocus"
+                },
+                {
+                    "key": "cmd+l",
+                    "command": "-expandLineSelection",
+                    "when": "textInputFocus"
+                },
+                {
+                    "key": "shift+alt+cmd+n",
+                    "command": "workbench.action.files.newUntitledFile"
+                },
+                {
+                    "key": "cmd+n",
+                    "command": "-workbench.action.files.newUntitledFile"
+                },
+                {
+                    "key": "cmd+n",
+                    "command": "explorer.newFile"
+                },
+                {
+                    "key": "alt+b",
+                    "command": "editor.emmet.action.balanceOut"
+                },
+                {
+                    "key": "alt+v",
+                    "command": "editor.emmet.action.balanceIn"
+                },
+                {
+                    "key": "alt+a",
+                    "command": "editor.emmet.action.wrapWithAbbreviation"
+                }
+            ]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2 id="snippets">Snippets</h2>
+          <p>I only have one. The very one I use for these blogs!</p>
+          
+          <pre><code>
+            // "snippets.code-snippets"
+            // or "New Global Snippets file..." if not already existing
+            // Accessible by "shift+cmd+p" then "Snippets: Configure User Snippets"
+            {
+                "Create header component": {
+                    "scope": "html,javascript",
+                    "prefix": ["header-component"],
+                    "body": [
+                        "&lt;header-component>",
+                        "	&lt;span slot="h1-heading">${TM_SELECTED_TEXT:${1:Title}}&lt;/span>",
+                        "	&lt;span slot="subheading">$2&lt;/span>",
+                        "	&lt;span slot="category-slot">${3:General}&lt;/span>",
+                        "	&lt;span slot="publication-date">${4:$CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR}&lt;/span>",
+                        "	&lt;span slot="updated-date">${5:$CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR}&lt;/span>",
+                        "&lt;/header-component>"
+                    ]
+                }
+            }
+          </code></pre>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -9,6 +9,11 @@ const blogData = [
     content: "Here I present lesser known tips inside and outside the actual application.",
     href: "./blogs/chemdraw_tips.html",
   },
+  {
+    title: "My VSCode configurations",
+    content: "I will present my settings, keybindings, snippets and so on.",
+    href: "./blogs/vscode_configurations.html",
+  }
   // {
   //   title: "How to set up Paths in MacOS",
   //   content: "Learn how to shorten terminal commands and paths. Useful for automation.",
