@@ -172,10 +172,13 @@ export function renderHeader() {
 
   function renderFooter() {
     const footer = document.querySelector("footer");
-    footer.innerHTML = `
-      @Molybdenum42, 2026 
+    const footerHTML = `
+      @Molybdenum42, 2026–<span class="footer__current-year"></span>
       (<a href="https://github.com/khang-mol" target="_blank">GitHub</a>)
     `;
+    footer.innerHTML = footerHTML;
+    
+    document.querySelector(".footer__current-year").textContent = new Date().getFullYear();
   };
   renderFooter();
 };

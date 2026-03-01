@@ -24,6 +24,11 @@ const blogData = [
     content: "Includes color use and general graphics design.",
     href: "./blogs/accessible_color_use.html",
   },
+  {
+    title: "Useful Japanese links and Add-ons",
+    content: "Legal and legitimate links and Add-ons for learning Japanese.",
+    href: "./blogs/japanese_links.html",
+  },
   // {
   //   title: "How to set up Paths in MacOS",
   //   content: "Learn how to shorten terminal commands and paths. Useful for automation.",
