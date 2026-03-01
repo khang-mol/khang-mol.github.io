@@ -15,10 +15,8 @@ export function renderHeader() {
       </a>
     
       <abbr title="Home">
-        <a href="/index.html">
-          <button class="navbar__button-default">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
-          </button>
+        <a href="/index.html" class="navbar__button-default">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
         </a>
       </abbr>
 
@@ -46,7 +44,7 @@ export function renderHeader() {
       window.addEventListener("DOMContentLoaded", setNavbarHeightProperty());
       window.addEventListener("load", setNavbarHeightProperty());
       window.addEventListener("resize", setNavbarHeightProperty());
-    })();
+    })(); // immediately invoked function expression
 
 
     // Theme toggler.
@@ -124,7 +122,7 @@ export function renderHeader() {
       </div>
 
       <nav aria-label="table-of-contents">
-        <p style="margin-top: 16px;"><strong>Table of Contents</strong></p>
+        <p style="margin-top: 16px;"><strong class="js-table-of-contents"></strong></p>
         <ul class="table-of-contents"></ul>
       </nav>
     `;
@@ -154,6 +152,12 @@ export function renderHeader() {
     const headerShadowRoot = headerComponent.shadowRoot;
     const tableOfContents = headerShadowRoot.querySelector(".table-of-contents");
     const h2Headings = document.querySelectorAll("h2");
+
+    if (h2Headings.length) {
+      const tableOfContentsHeading = headerShadowRoot.querySelector(".js-table-of-contents");
+      tableOfContentsHeading.textContent = "Table of Contents";
+    };
+    
     h2Headings.forEach(heading => {
       const listItem = document.createElement("li");
       const linkElement = document.createElement("a");

@@ -13,7 +13,17 @@ const blogData = [
     title: "My VSCode configurations",
     content: "I will present my settings, keybindings, snippets and so on.",
     href: "./blogs/vscode_configurations.html",
-  }
+  },
+  {
+    title: "Useful links for Chemistry",
+    content: "A list of softwares and useful links I use for my chemistry related tasks.",
+    href: "./blogs/chemistry_useful_links.html",
+  },
+  {
+    title: "Links for accessible graphs",
+    content: "Includes color use and general graphics design.",
+    href: "./blogs/accessible_color_use.html",
+  },
   // {
   //   title: "How to set up Paths in MacOS",
   //   content: "Learn how to shorten terminal commands and paths. Useful for automation.",

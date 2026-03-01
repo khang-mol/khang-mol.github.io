@@ -54,10 +54,11 @@ body {
 
 .body-container {
   /* padding: 16px; */
-  padding-left: 16px;
+  /* padding-left: 16px; */
+  margin-inline: auto;
   display: flex;
   justify-content: center;
-  width: min(1000px, 95%);
+  width: min(80ch, 100% - 4rem);
 }
 
 h1 {
@@ -123,6 +124,9 @@ img {
   margin-top: 16px;
 }
 
+aside {
+  width: fit-content;
+}
 details {
   background-color: hsla(200, 80%, 35%, 0.5);
   padding: 8px;
@@ -133,10 +137,10 @@ a:link {
   color: hsla(200, 80%, 60%, 0.9);
 }
 a:visited {
-  color: hsla(220, 80%, 70%, 0.5);
+  color: hsla(220, 80%, 60%, 0.4);
 }
 
-ul > li + p {
+li + p {
   margin-top: 0;
 }
 
@@ -176,6 +180,9 @@ ul > li + p {
 .navbar__button-default:hover {
   background-color: var(--bg);
 }
+.navbar__button-default:focus-visible {
+  outline: 2px solid pink;
+}
 .dark-mode-toggler {
   display: flex;
   align-items: center;
@@ -202,9 +209,13 @@ svg {
 section {
   counter-reset: h3;
 }
-section > h3::before {
+.numbered-h3::before {
   content: counter(h3) ". ";
   counter-increment: h3;
+}
+
+.text-highlight {
+  color: rgb(164, 104, 30);
 }
 
 img {

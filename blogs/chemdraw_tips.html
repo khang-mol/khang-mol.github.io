@@ -38,27 +38,27 @@
           <h2 id="chemdraw-tips-ui">Tips inside the user interface</h2>
           <p>Here I will discuss some tips you can do when interacting solely through your user interface (UI). No coding-like knowdledge is needed.</p>
 
-          <h3>Magic Hotkeys Cheat Sheet</h3>
+          <h3 class="numbered-h3">Magic Hotkeys Cheat Sheet</h3>
           <p>This is a must have which you probably already knew. Click "Help" in the Menu Bar at the top of your screen and go to "Shortcuts and Hotkeys".</p>
 
-          <h3>More Elaborate Cheat Sheet</h3>
+          <h3 class="numbered-h3">More Elaborate Cheat Sheet</h3>
           <p>To take this one step further, a more elaborate Cheat Sheet can be found <a href="https://revvitysignals.com/sites/default/files/2025-01/rs-ebook-ChemDraw-Tips-and-Tricks%20%282%29.pdf">here</a>. It includes Shortcuts for aligning objects, cleaning up or joining structures, 3D clean-ups and more.</p>
 
-          <h3>Automatic Chemical Formula Style</h3>
+          <h3 class="numbered-h3">Automatic Chemical Formula Style</h3>
           <p>When you type chemical formulae with the text tool, you need subscripts and superscripts. A known method to apply these is by selecting the "Formula" button (or by pressing <code>"Cmd + F"</code>) as shown in the picture below.</p>
 
           <figure>
             <img src="https://ik.imagekit.io/molybdenum42/Chemdraw_Formula_Command.png" alt="Chemdraw Formula Command" loading="lazy">
           </figure>
 
-          <p>If you want this option as the default, go to <code>"File" > "Document Settings..." > "Text Captions"</code>. In the Section <code>"Baseline Style</code>, click <code>"Formula"</code> and then <code>"Ok"</code>.</p>
+          <p>If you want this option as the default, go to <code>"File" > "Document Settings..." > "Text Captions"</code>. In the Section <code>"Baseline Style"</code>, click <code>"Formula"</code> and then <code>"Ok"</code>.</p>
         </section>
 
         <section>
           <h2 id="chemdraw-tips-advanced">More advanced tips</h2>
           <p>These tips will involve more than the UI. While no knowdledge of coding is necessary, it will certainly help.</p>
 
-          <h3>Create new hotkeys/shortcuts via Settings (MacOS)</h3>
+          <h3 class="numbered-h3">Create new hotkeys/shortcuts via Settings (MacOS)</h3>
           <p>Click the Apple symbol in the top left corner and then "System Settings" (old: "System Preferences..."). In the sidebar, go to "Keyboard" > "Shortcuts" (or similar). While the image below is from an older MacOS version, you should get a window similar to this:</p>
 
           <figure>
@@ -78,14 +78,14 @@
 
           
           
-          <h3>Create new hotkeys/shortcuts via xml</h3>
+          <h3 class="numbered-h3">Create new hotkeys/shortcuts via xml</h3>
 
           <p>To create molecules in 3D, I like to incorporate the tool in the picture below into my workflow. First, select the "3DTrackball" tool highlighted by the orange arrow. Then, select the parts of the structure I want to change the perspective of (for multiple selections, press <code>"Shift"</code> while dragging with the mouse). Drag with your mouse until you are satisfied (press <code>"Alt+Shift"</code> to keep things steady). Add/Remove substituents and finally rotate to get part of your final product. That is how I managed to draw the commonly referenced drug vancomycin.</p>
           
           <figure>
             <div class="blur-load" style="background-image: url(./images/Chemdraw_3DTrackball-small.png);"></div>
             <img src="https://ik.imagekit.io/molybdenum42/Chemdraw_3DTrackball.png" alt="Chemdraw 3DTrackball" loading="lazy">
-          </figu>
+          </figure>
 
           <p>Since I use that tool on a semi-regular basis, I assigned a hotkey (<code>";"</code>) to it, to avoid using the mouse unnecessarily. As far as I know, the tool cannot be selected from the Menu Bar (the navigation bar on the very top). Therefore, we have to mingle with the hotkeys file itself. As such, go to the following path (if default installation):</p>
 
