@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Various utilities around Chemistry">
+  <meta name="author" content="Molybdenum42">
+  <title>lazychem</title>
+  <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/index.css">
+
+  <script type="module" src="/scripts/components/allComponents.js" defer></script>
+  <script type="module" src="calculator.js" defer></script>
+</head>
+<body>
+  <nav class="primary-navigation" aria-label="primary-navigation"></nav>
+
+  <div class="site body-container">
+    <header>
+      <h1>Iodometry calculator</h1>
+    </header>
+
+    <main>
+      <p>Is your zincate a solid or a solution?</p>
+      
+      <p>zincate solution</p>
+      <ol>
+        <li>Input mass of iodine I<sub>2</sub></li>
+        <li>Moles of iodine will be calculated</li>
+        <li>Input used volume of zincate</li>
+        <li>Input how many equivalents of iodine are used up per zincate</li>
+        <li>Concentration of zincate will be calculated</li>
+        <li>Extra: input total volume of zincate</li>
+        <li>Extra: calculate total moles of zincate inside solution</li>
+      </ol>
+
+      <div>
+        <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
+        <input type="number" name="solution__iodine-mass" id="solution__iodine-mass" min="0" required> mg
+      </div>
+      <div>
+        <label for="solution__iodine-equivalents">Equivalents of I<sub>2</sub>:</label>
+        <input type="number" name="solution__iodine-equivalents" id="solution__iodine-equivalents" value="1" min="1" max="10" required>
+      </div>
+      <div>
+        <label for="solution__zincate-volume">Used volume of zincate:</label>
+        <input type="number" name="solution__zincate-volume" id="solution__zincate-volume" min="0" required> mL
+      </div>
+      <div>
+        <label for="solution__zincate-volume-total">Total volume of zincate:</label>
+        <input type="number" name="solution__zincate-volume-total" id="solution__zincate-volume-total" min="0"> mL (not required)
+      </div>
+
+      <button type="button" class="js-solution__iodometry-calculate">Calculate</button>
+      
+      <div class="extra-field js-extra-field"></div>
+
+
+      <p>zincate solid (in the works)</p>
+      <ol>
+        <li>input mass of iodine I2</li>
+        <li>input volume of THF</li>
+        <li>calculate concentration of iodine solution</li>
+        <li>input mass of zincate</li>
+        <li>input how many equivalents of iodine are used up per zincate</li>
+        <li>calculate moles of used zincate</li>
+        <li>extra: input total mass of zincate</li>
+        <li>extra: calculate total moles of zincate</li>
+      </ol>
+    </main>
+  </div>
+  
+  <footer></footer>
+</body>
+</html>
