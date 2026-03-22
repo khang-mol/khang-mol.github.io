@@ -68,9 +68,22 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
     </div>
     <div id="test"></div>
   `;
+
+  // // tutorial: https://www.youtube.com/watch?v=N1vNNT_0N0Y
+  // let trustedTypes;
+  // if (typeof(trustedTypes) === "undefined") {
+  //   trustedTypes = { createPolicy: (n, rules) => rules };
+  // }
+  
+  // const escapeHTMLPolicy = trustedTypes.createPolicy("myEscapePolicy", {
+  //   createHTML: (string) => string.replace(/</g, "&lt;"),
+  // });
+  
+  // document.querySelector(".js-extra-field").innerHTML = escapeHTMLPolicy.createHTML(solutionIodometryHTML);
   
   document.querySelector(".js-extra-field").innerHTML = solutionIodometryHTML;
-  let zincateHTML
+  
+  let zincateHTML;
   if (Number(totalZincate)) {
     zincateHTML = `${totalZincate}&nbsp;mL, ${concentrationZincate}&nbsp;M, ${totalZincateMoles}&nbsp;mmol`;
   } else {
@@ -84,13 +97,11 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
     copyButton.addEventListener("click", () => {
       // console.log(typeof(copyButton.onclick));
       const targetElement = document.querySelector(copyButton.dataset.copy);
-      // targetElement.select();
-      // targetElement.setSelectionRange(0, 99999); // for mobile
-      console.log(targetElement);
+      targetElement.select(); // not really necessary
+      targetElement.setSelectionRange(0, 99999); // for mobile
       navigator.clipboard.writeText(targetElement.textContent);
       const tooltip = document.querySelector(".js-tooltiptext");
       tooltip.textContent = "Copied!";
-      // alert("Copied: " + targetElement.value);
     });
   });
 });

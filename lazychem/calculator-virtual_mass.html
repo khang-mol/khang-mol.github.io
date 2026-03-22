@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Various utilities around Chemistry">
+  <meta name="author" content="Molybdenum42">
+  <title>lazychem</title>
+  <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/index.css">
+
+  <script type="module" src="/scripts/components/allComponents.js" defer></script>
+  <script type="module" src="calculator.js" defer></script>
+</head>
+<body>
+  <nav class="primary-navigation" aria-label="primary-navigation"></nav>
+
+  <div class="site body-container">
+    <header>
+      <h1>Virtual Mass calculator</h1>
+    </header>
+
+    <main>
+      <p>Before anything, here are some key considerations you should make:</p>
+      <ol>
+        <li><strong>Internal Standard:</strong> If you expect to derive your yield off of your NMR spectrum, use an internal standard if possible.</li>
+        <li><strong>Relaxation Time (T1):</strong> Ensure, that the relaxation time in your acquisition parameters is long enough to allow full relaxation. Otherwise, integration does not guarantee accurate molar ratios.</li>
+        <li><strong>Impurities:</strong> If your NMR spectrum shows multiple non-negligible compounds/impurities, ensure you normalize the integrals for all those components present in the NMR spectrum.</li>
+      </ol>
+
+      <p>Here are the key steps:</p>
+      <ol>
+        <li>Input total measured mass.</li>
+        <li>Input Integral, number of protons (H), molecular weight of product</li>
+        <li>Input Integral, number of protons (H), molecular weight of other compound</li>
+      </ol>
+
+    </main>
+  </div>
+  
+  <footer></footer>
+</body>
+</html>
