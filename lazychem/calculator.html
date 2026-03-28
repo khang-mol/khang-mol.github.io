@@ -19,15 +19,17 @@
 
   <div class="site body-container">
     <header>
-      <h1>Iodometry calculator</h1>
+      <h1>Chemistry Titration Calculator</h1>
     </header>
 
     <main>
+      <h2>Iodometry calculator</h2>
+      
       <p>Is your zincate a solid or a solution?</p>
       
       <p>zincate solution:</p>
       <p>Do a reverse titration. It is assumed, that your zincate solution (analyte) is added to your iodine stock solution in THF (titrant).</p>
-      <ol>
+      <!-- <ol>
         <li>Input mass of iodine I<sub>2</sub></li>
         <li>Moles of iodine will be calculated</li>
         <li>Input used volume of zincate</li>
@@ -35,7 +37,7 @@
         <li>Concentration of zincate will be calculated</li>
         <li>Extra: input total volume of zincate</li>
         <li>Extra: calculate total moles of zincate inside solution</li>
-      </ol>
+      </ol> -->
 
       <div>
         <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
@@ -60,7 +62,7 @@
 
 
       <p>zincate solid (in the works):</p>
-      <ol>
+      <!-- <ol>
         <li>input mass of iodine I2</li>
         <li>input volume of THF</li>
         <li>calculate concentration of iodine solution</li>
@@ -69,7 +71,46 @@
         <li>calculate moles of used zincate</li>
         <li>extra: input total mass of zincate</li>
         <li>extra: calculate total moles of zincate</li>
-      </ol>
+      </ol> -->
+
+
+      <h2>Grignard (or lithium organyl) titration calculator</h2>
+
+      <p>
+        For the titration of organometallic reagents (usually Grignard but sometimes lithium organyl reagents), Salicylaldehyde phenylhydrazone (Love's reagent) can be used as an indicator. The original paper by Love and Jones can be found here: <a href="https://pubs.acs.org/doi/pdf/10.1021/jo982433e?ref=article_openPDF"><i>J. Org. Chem.</i> <b>1999</b>, <i>64</i>, 3755–3756.</a>
+      </p>
+
+      <aside>
+        <details close>
+          <summary>
+            Here is the titration procedure itself:
+          </summary>
+            <blockquote>
+              "An accurately weighed sample of 1 (typically between 60.0 and 80.0 mg) is dissolved in 10 mL of freshly distilled THF and stirred at room temperature under nitrogen while the organometallic reagent is added slowly by means of a gastight syringe. A yellow color (the monoanion) forms initially, the end point being indicated by a change in this color to bright golden orange."
+            </blockquote>
+        </details>
+      </aside>
+
+      <div>
+        <label for="grignard__love-mass">Measured mass of Love's reagent:</label>
+        <input type="number" name="grignard__love-mass" id="grignard__love-mass" min="0" required> mg
+      </div>
+      <div>
+        <label for="grignard__love-equivalents">Equivalents of Love's reagent:</label>
+        <input type="number" name="grignard__love-equivalents" id="grignard__love-equivalents" value="1" min="1" max="10" required>
+      </div>
+      <div>
+        <label for="grignard__grignard-volume">Used volume of Grignard solution:</label>
+        <input type="number" name="grignard__grignard-volume" id="grignard__grignard-volume" min="0" required> mL
+      </div>
+      <div>
+        <label for="grignard__grignard-volume-total">Total volume of Grignard solution:</label>
+        <input type="number" name="grignard__grignard-volume-total" id="grignard__grignard-volume-total" min="0"> mL (not required)
+      </div>
+
+      <button type="button" class="js-grignard__grignard-calculate">Calculate</button>
+
+      <div class="extra-field js-grignard__extra-field"></div>
     </main>
   </div>
   
