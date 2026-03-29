@@ -89,7 +89,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
     zincateHTML = `${concentrationZincate}&nbsp;M`;
   };
   document.getElementById("solution__copy").innerHTML = `
-    I₂ (${iodineMass}&nbsp;mg, ${iodineMoles}&nbsp;mmol, ${iodineEquivalents}&nbsp;eq.), zincate (${zincateHTML})
+    I₂ (${iodineMass}&nbsp;mg, ${iodineMoles}&nbsp;mmol, ${iodineEquivalents}&nbsp;eq.) against ${usedZincate}&nbsp;mL, zincate (${zincateHTML})
   `.trim();
 
   document.querySelectorAll(".solution__iodometry-copy").forEach(copyButton => {
@@ -104,6 +104,8 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
     });
   });
 });
+
+
 
 addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
   const loveMass = document.getElementById("grignard__love-mass").value;
@@ -168,10 +170,10 @@ addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
   if (Number(totalGrignard)) {
     grignardHTML = `${totalGrignard}&nbsp;mL, ${concentrationGrignard}&nbsp;M, ${totalGrignardMoles}&nbsp;mmol`;
   } else {
-    grignardHTML = `${concentrationGrignard}&nbsp;mL`;
+    grignardHTML = `${concentrationGrignard}&nbsp;M`;
   };
   document.getElementById("grignard__copy").innerHTML = `
-    Love's reagent (${loveMass}&nbsp;mg, ${loveMoles}&nbsp;mmol, ${loveEquivalents}&nbsp;eq.), Grignard (${grignardHTML})
+    Love's reagent (${loveMass}&nbsp;mg, ${loveMoles}&nbsp;mmol, ${loveEquivalents}&nbsp;eq.) against ${usedGrignard}&nbsp;mL, Grignard (${grignardHTML})
   `.trim();
 
   document.querySelectorAll(".grignard__copy-text").forEach(copyButton => {
