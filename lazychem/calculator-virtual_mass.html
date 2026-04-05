@@ -37,6 +37,46 @@
         <li>Input Integral, number of protons (H), molecular weight of other compound</li>
       </ol>
 
+      <div>
+        <label for="total-mass">Total mass:</label>
+        <input type="number" name="total-mass" id="total-mass" min="0" required> mg
+      </div>
+      <div>
+        <label for="expected-moles">Expected moles:</label>
+        <input type="number" name="expected-moles" id="expected-moles" min="0"> mmol (not required)
+      </div>
+
+      <p>Product:</p>
+      <div>
+        <label for="product-integral">Integral:</label>
+        <input type="number" name="product-integral" id="product-integral" value="1" min="0" required>
+      </div>
+      <div>
+        <label for="product-H">Number of protons (H):</label>
+        <input type="number" name="product-H" id="product-H" value="1" min="1" required>
+      </div>
+      <div>
+        <label for="product-MW">Molecular weight:</label>
+        <input type="number" name="product-MW" id="product-MW" min="0" required> g/mol
+      </div>
+
+      <p>Impurity 1:</p>
+      <div>
+        <label for="impurity-integral-1">Integral:</label>
+        <input type="number" name="impurity-integral-1" id="impurity-integral-1" min="0" required>
+      </div>
+      <div>
+        <label for="impurity-H-1">Number of protons (H):</label>
+        <input type="number" name="impurity-H-1" id="impurity-H-1" value="1" min="1" required>
+      </div>
+      <div>
+        <label for="impurity-MW-1">Molecular weight:</label>
+        <input type="number" name="impurity-MW-1" id="impurity-MW-1" min="0" required> g/mol
+      </div>
+      
+      <button type="button" class="js-calculate-virtual-mass">Calculate</button>
+      
+      <div class="extra-field js-extra-field__virtual-mass"></div>
     </main>
   </div>
   
