@@ -50,7 +50,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
   solutionIodometryHTML += `
     <div>
       <p><label for="solution__copy">Copy the short version:</label></p>
-      <textarea name="solution__copy" id="solution__copy" class="js-solution__iodometry-summary" cols="35" rows="2">
+      <textarea name="solution__copy" id="solution__copy" class="js-solution__iodometry-summary" cols="45" rows="2">
       </textarea>
       <!--
       <div contenteditable="true" id="solution__copy" name="solution__copy" class="js-solution__iodometry-summary">
@@ -107,6 +107,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
 
 
 
+
 addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
   const loveMass = document.getElementById("grignard__love-mass").value;
   const loveEquivalents = document.getElementById("grignard__love-equivalents").value;
@@ -151,7 +152,7 @@ addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
   grignardTitrationHTML += `
     <div>
       <p><label for="grignard__copy">Copy the short version:</label></p>
-      <textarea name="grignard__copy" id="grignard__copy" class="js-grignard__titration-summary" cols="35" rows="2">
+      <textarea name="grignard__copy" id="grignard__copy" class="js-grignard__titration-summary" cols="45" rows="2">
       </textarea>
     </div>
     <div class="tooltip">
@@ -187,6 +188,96 @@ addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
     });
   });
 });
+
+
+
+addGlobalEventListener("click", ".js-lithium__lithium-calculate", () => {
+  const suffertMass = document.getElementById("lithium__suffert-mass").value;
+  const suffertReagent = document.getElementById("suffert-select").value;
+  let suffertMolarMass;
+  if (suffertReagent === "toluidine") {
+    suffertMolarMass = 191.27;
+  } else if (suffertReagent === "benzylaniline") {
+    suffertMolarMass = 267.3720;
+  }
+  const usedLithium = document.getElementById("lithium__lithium-volume").value;
+
+  if (!(Number(suffertMass) && Number(usedLithium))) {
+    alert("Invalid numbers");
+    return;
+  };
+
+  const suffertMoles = Math.round(suffertMass / suffertMolarMass * 1000) / 1000;
+  const concentrationLithium = (Math.round(suffertMoles / (usedLithium) * 1000) / 1000).toPrecision(3);
+
+  let lithiumTitrationHTML = `
+    <p>For the titration of Suffert's reagent 
+    (${suffertMass}&nbsp;mg,
+    ${suffertMoles}&nbsp;mmol,
+    <strong>${usedLithium}&nbsp;mL</strong> of organolithium solution was needed.
+    </p>
+
+    <p>
+      The concentration of the organolithium solution is
+      <span class="frac">
+        <span>${suffertMoles}&nbsp;mmol</span>
+        <span class="symbol">/</span>
+        <span class="bottom">${usedLithium}&nbsp;mL</span>
+      </span>
+      = <strong>${concentrationLithium}&nbsp;M</strong>
+    </p>
+  `;
+
+  const totalLithium = document.getElementById("lithium__lithium-volume-total").value;
+  let totalLithiumMoles;
+  if (Number(totalLithium)) {
+    totalLithiumMoles = (concentrationLithium * totalLithium).toPrecision(3);
+    lithiumTitrationHTML += `
+      <p>Total moles of organolithium solution: ${concentrationLithium}&nbsp;M &middot; ${totalLithium}&nbsp;mL = <strong>${totalLithiumMoles}&nbsp;mmol</strong></p>
+    `;
+  }
+
+  lithiumTitrationHTML += `
+    <div>
+      <p><label for="lithium__copy">Copy the short version:</label></p>
+      <textarea name="lithium__copy" id="lithium__copy" class="js-lithium__titration-summary" cols="45" rows="2">
+      </textarea>
+    </div>
+    <div class="tooltip">
+      <button type="button" class="lithium__copy-text" data-copy=".js-lithium__titration-summary"
+        onmouseout="const tooltip = document.querySelector('.js-tooltiptext-lithium__titration');
+                    tooltip.textContent = 'Copy to clipboard';">
+        <span class="tooltiptext js-tooltiptext-lithium__titration">Copy to clipboard</span>
+        <span>Copy</span>
+      </button>
+    </div>
+  `;
+
+  document.querySelector(".js-lithium__extra-field").innerHTML = lithiumTitrationHTML;
+
+  let lithiumHTML;
+  if (Number(totalLithium)) {
+    lithiumHTML = `${totalLithium}&nbsp;mL, ${concentrationLithium}&nbsp;M, ${totalLithiumMoles}&nbsp;mmol`;
+  } else {
+    lithiumHTML = `${concentrationLithium}&nbsp;M`;
+  };
+  document.getElementById("lithium__copy").innerHTML = `
+    Suffert's reagent (${suffertMass}&nbsp;mg, ${suffertMoles}&nbsp;mmol) against ${usedLithium}&nbsp;mL, Lithium (${lithiumHTML})
+  `.trim();
+
+  document.querySelectorAll(".lithium__copy-text").forEach(copyButton => {
+    copyButton.addEventListener("click", () => {
+      const targetElementLithium = document.querySelector(copyButton.dataset.copy);
+      targetElementLithium.select(); // not really necessary
+      targetElementLithium.setSelectionRange(0, 99999); // for mobile
+      navigator.clipboard.writeText(targetElementLithium.textContent);
+      const tooltip = document.querySelector(".js-tooltiptext-lithium__titration");
+      tooltip.textContent = "Copied!";
+    });
+  });
+});
+
+
 
 
 addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {

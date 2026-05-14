@@ -40,12 +40,12 @@
       </ol> -->
 
       <div>
-        <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
-        <input type="number" name="solution__iodine-mass" id="solution__iodine-mass" min="0" required> mg
-      </div>
-      <div>
         <label for="solution__iodine-equivalents">Equivalents of I<sub>2</sub>:</label>
         <input type="number" name="solution__iodine-equivalents" id="solution__iodine-equivalents" value="1" min="1" max="10" required>
+      </div>
+      <div>
+        <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
+        <input type="number" name="solution__iodine-mass" id="solution__iodine-mass" min="0" required> mg
       </div>
       <div>
         <label for="solution__zincate-volume">Used volume of zincate:</label>
@@ -74,10 +74,10 @@
       </ol> -->
 
 
-      <h2>Grignard (or lithium organyl) titration calculator</h2>
+      <h2>Grignard (or phenyl lithium) titration calculator</h2>
 
       <p>
-        For the titration of organometallic reagents (usually Grignard but sometimes lithium organyl reagents), Salicylaldehyde phenylhydrazone (Love's reagent) can be used as an indicator. The original paper by Love and Jones can be found here: <a href="https://pubs.acs.org/doi/10.1021/jo982433e"><i>J. Org. Chem.</i> <b>1999</b>, <i>64</i>, 3755–3756.</a>
+        For the titration of Grignard reagents (or sometimes phenyl lithium), salicylaldehyde phenylhydrazone (Love's reagent) can be used as an indicator. The original paper by Love and Jones can be found here: <a href="https://pubs.acs.org/doi/10.1021/jo982433e"><i>J. Org. Chem.</i> <b>1999</b>, <i>64</i>, 3755–3756.</a>
       </p>
 
       <aside>
@@ -85,19 +85,19 @@
           <summary>
             Here is the titration procedure itself:
           </summary>
-            <blockquote>
-              "An accurately weighed sample of 1 (typically between 60.0 and 80.0 mg) is dissolved in 10 mL of freshly distilled THF and stirred at room temperature under nitrogen while the organometallic reagent is added slowly by means of a gastight syringe. A yellow color (the monoanion) forms initially, the end point being indicated by a change in this color to bright golden orange."
-            </blockquote>
+          <blockquote>
+            "An accurately weighed sample of 1 (typically between 60.0 and 80.0 mg) is dissolved in 10 mL of freshly distilled THF and stirred at room temperature under nitrogen while the organometallic reagent is added slowly by means of a gastight syringe. A yellow color (the monoanion) forms initially, the end point being indicated by a change in this color to bright golden orange."
+          </blockquote>
         </details>
       </aside>
 
       <div>
-        <label for="grignard__love-mass">Measured mass of Love's reagent:</label>
-        <input type="number" name="grignard__love-mass" id="grignard__love-mass" min="0" required> mg
-      </div>
-      <div>
         <label for="grignard__love-equivalents">Equivalents of Love's reagent:</label>
         <input type="number" name="grignard__love-equivalents" id="grignard__love-equivalents" value="1" min="1" max="10" required>
+      </div>
+      <div>
+        <label for="grignard__love-mass">Measured mass of Love's reagent:</label>
+        <input type="number" name="grignard__love-mass" id="grignard__love-mass" min="0" required> mg
       </div>
       <div>
         <label for="grignard__grignard-volume">Used volume of Grignard solution:</label>
@@ -111,6 +111,46 @@
       <button type="button" class="js-grignard__grignard-calculate">Calculate</button>
 
       <div class="extra-field js-grignard__extra-field"></div>
+
+
+      <h2>Lithium organyls (e. g. (n-/s-/t-)BuLi)</h2>
+
+      <p>
+        For the titration of organolithium reagents, <i>N</i>-pivaloyl-<i>o</i>-<strong>toluidine</strong> or <i>N</i>-pivaloyl-<i>o</i>-<strong>benzylaniline</strong> (Suffert's reagent) can be used as an indicator. The original paper by Jean Suffert can be found here: <a href="https://doi.org/10.1021/jo00263a052"><i>J. Org. Chem.</i> <b>1989</b>, <i>54</i>, 2, 509–510</a>
+      </p>
+
+      <aside>
+        <details close>
+          <summary>
+            Here is the titration procedure itself:
+          </summary>
+          <blockquote>
+            "A 25-mL round-bottom flask fitted with a septum and containing a magnetic stirring bar was evacuated and flushed with argon or nitrogen. Approximately 250-380 mg (0.9-2.0 mmol) of the reagent 1 or 2 was charged into the flask. Anhydrous THF (5-10 mL) was added, and a white sheet of paper was placed behind the flask. The organolithium solution was added from a 1-mL Hamilton gas-tight syringe. The solution was rapidly stirred under argon. Triplicate analyses were performed in all cases."
+          </blockquote>
+        </details>
+      </aside>
+
+      <label for="suffert-select">Choose the Suffert reagent:</label>
+      <select style="margin-top: 12px;" name="suffert" id="suffert-select">
+        <option value="toluidine" selected>toluidine</option>
+        <option value="benzylaniline">benzylanaline</option>
+      </select>
+      <div>
+        <label for="lithium__suffert-mass">Measured mass of Suffert's reagent:</label>
+        <input type="number" name="lithium__suffert-mass" id="lithium__suffert-mass" min="0" required> mg
+      </div>
+      <div>
+        <label for="lithium__lithium-volume">Used volume of organolithium solution:</label>
+        <input type="number" name="lithium__lithium-volume" id="lithium__lithium-volume" min="0" required> mL
+      </div>
+      <div>
+        <label for="lithium__lithium-volume-total">Total volume of organolithium solution:</label>
+        <input type="number" name="lithium__lithium-volume-total" id="lithium__lithium-volume-total" min="0"> mL (not required)
+      </div>
+
+      <button type="button" class="js-lithium__lithium-calculate">Calculate</button>
+
+      <div class="extra-field js-lithium__extra-field"></div>
     </main>
   </div>
   
