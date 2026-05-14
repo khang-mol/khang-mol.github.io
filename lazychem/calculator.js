@@ -6,19 +6,19 @@ export function addGlobalEventListener(type, selector, callback, parent = docume
   });
 };
 
-addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
+function titrationZincSolution() {
   const iodineMass = document.getElementById("solution__iodine-mass").value;
   const iodineEquivalents = document.getElementById("solution__iodine-equivalents").value;
   const usedZincate = document.getElementById("solution__zincate-volume").value;
-
+  
   if (!(Number(iodineMass) && Number(iodineEquivalents) && Number(usedZincate))) {
     alert("Invalid numbers");
     return;
   };
-
+  
   const iodineMoles = Math.round(iodineMass / (126.904 * 2) * 1000) / 1000;
   const concentrationZincate = (Math.round(iodineMoles / (iodineEquivalents * usedZincate) * 1000) / 1000).toPrecision(3);
-
+  
   let solutionIodometryHTML = `
     <p>For the titration of I<sub>2</sub> 
       (${iodineMass}&nbsp;mg, 
@@ -46,7 +46,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
       <p>Total moles of zincate: ${concentrationZincate}&nbsp;M &middot; ${totalZincate}&nbsp;mL = <strong>${totalZincateMoles}&nbsp;mmol</strong>.</p>
     `;
   };
-
+  
   solutionIodometryHTML += `
     <div>
       <p><label for="solution__copy">Copy the short version:</label></p>
@@ -67,7 +67,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
       </button>
     </div>
   `;
-
+  
   // // tutorial&nbsp; https://www.youtube.com/watch?v=N1vNNT_0N0Y
   // let trustedTypes;
   // if (typeof(trustedTypes) === "undefined") {
@@ -91,7 +91,7 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
   document.getElementById("solution__copy").innerHTML = `
     I₂ (${iodineMass}&nbsp;mg, ${iodineMoles}&nbsp;mmol, ${iodineEquivalents}&nbsp;eq.) against ${usedZincate}&nbsp;mL, zincate (${zincateHTML})
   `.trim();
-
+  
   document.querySelectorAll(".solution__iodometry-copy").forEach(copyButton => {
     copyButton.addEventListener("click", () => {
       // console.log(typeof(copyButton.onclick));
@@ -102,13 +102,21 @@ addGlobalEventListener("click", ".js-solution__iodometry-calculate", e => {
       const tooltip = document.querySelector(".js-tooltiptext-solution__iodometry");
       tooltip.textContent = "Copied!";
     });
-  });
+  });  
+};
+
+addGlobalEventListener("click", ".js-solution__iodometry-calculate", () => {
+  titrationZincSolution();
+});
+addGlobalEventListener("keydown", "#titration-zinc-solution input", e => {
+  if (e.key === "Enter") {
+    titrationZincSolution();
+  };
 });
 
 
 
-
-addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
+function titrationGrignard() {
   const loveMass = document.getElementById("grignard__love-mass").value;
   const loveEquivalents = document.getElementById("grignard__love-equivalents").value;
   const usedGrignard = document.getElementById("grignard__grignard-volume").value;
@@ -187,11 +195,21 @@ addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
       tooltip.textContent = "Copied!";
     });
   });
+};
+
+addGlobalEventListener("click", ".js-grignard__grignard-calculate", () => {
+  titrationGrignard();
+});
+addGlobalEventListener("keydown", "#titration-grignard input", e => {
+  if (e.key === "Enter") {
+    titrationGrignard();
+  };
 });
 
 
 
-addGlobalEventListener("click", ".js-lithium__lithium-calculate", () => {
+function titrationLithium() {
+
   const suffertMass = document.getElementById("lithium__suffert-mass").value;
   const suffertReagent = document.getElementById("suffert-select").value;
   let suffertMolarMass;
@@ -275,6 +293,15 @@ addGlobalEventListener("click", ".js-lithium__lithium-calculate", () => {
       tooltip.textContent = "Copied!";
     });
   });
+};
+
+addGlobalEventListener("click", ".js-lithium__lithium-calculate", () => {
+  titrationLithium();
+});
+addGlobalEventListener("keydown", "#titration-lithium input", e => {
+  if (e.key === "Enter") {
+    titrationLithium();
+  };
 });
 
 

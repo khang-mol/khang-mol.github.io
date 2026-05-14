@@ -39,21 +39,23 @@
         <li>Extra: calculate total moles of zincate inside solution</li>
       </ol> -->
 
-      <div>
-        <label for="solution__iodine-equivalents">Equivalents of I<sub>2</sub>:</label>
-        <input type="number" name="solution__iodine-equivalents" id="solution__iodine-equivalents" value="1" min="1" max="10" required>
-      </div>
-      <div>
-        <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
-        <input type="number" name="solution__iodine-mass" id="solution__iodine-mass" min="0" required> mg
-      </div>
-      <div>
-        <label for="solution__zincate-volume">Used volume of zincate:</label>
-        <input type="number" name="solution__zincate-volume" id="solution__zincate-volume" min="0" required> mL
-      </div>
-      <div>
-        <label for="solution__zincate-volume-total">Total volume of zincate:</label>
-        <input type="number" name="solution__zincate-volume-total" id="solution__zincate-volume-total" min="0"> mL (not required)
+      <div id="titration-zinc-solution">
+        <div>
+          <label for="solution__iodine-equivalents">Equivalents of I<sub>2</sub>:</label>
+          <input type="number" name="solution__iodine-equivalents" id="solution__iodine-equivalents" value="1" min="1" max="10" required>
+        </div>
+        <div>
+          <label for="solution__iodine-mass">Measured mass of I<sub>2</sub>:</label>
+          <input type="number" name="solution__iodine-mass" id="solution__iodine-mass" min="0" required> mg
+        </div>
+        <div>
+          <label for="solution__zincate-volume">Used volume of zincate:</label>
+          <input type="number" name="solution__zincate-volume" id="solution__zincate-volume" min="0" required> mL
+        </div>
+        <div>
+          <label for="solution__zincate-volume-total">Total volume of zincate:</label>
+          <input type="number" name="solution__zincate-volume-total" id="solution__zincate-volume-total" min="0"> mL (not required)
+        </div>
       </div>
 
       <button type="button" class="js-solution__iodometry-calculate">Calculate</button>
@@ -91,21 +93,23 @@
         </details>
       </aside>
 
-      <div>
-        <label for="grignard__love-equivalents">Equivalents of Love's reagent:</label>
-        <input type="number" name="grignard__love-equivalents" id="grignard__love-equivalents" value="1" min="1" max="10" required>
-      </div>
-      <div>
-        <label for="grignard__love-mass">Measured mass of Love's reagent:</label>
-        <input type="number" name="grignard__love-mass" id="grignard__love-mass" min="0" required> mg
-      </div>
-      <div>
-        <label for="grignard__grignard-volume">Used volume of Grignard solution:</label>
-        <input type="number" name="grignard__grignard-volume" id="grignard__grignard-volume" min="0" required> mL
-      </div>
-      <div>
-        <label for="grignard__grignard-volume-total">Total volume of Grignard solution:</label>
-        <input type="number" name="grignard__grignard-volume-total" id="grignard__grignard-volume-total" min="0"> mL (not required)
+      <div id="titration-grignard">
+        <div>
+          <label for="grignard__love-equivalents">Equivalents of Love's reagent:</label>
+          <input type="number" name="grignard__love-equivalents" id="grignard__love-equivalents" value="1" min="1" max="10" required>
+        </div>
+        <div>
+          <label for="grignard__love-mass">Measured mass of Love's reagent:</label>
+          <input type="number" name="grignard__love-mass" id="grignard__love-mass" min="0" required> mg
+        </div>
+        <div>
+          <label for="grignard__grignard-volume">Used volume of Grignard solution:</label>
+          <input type="number" name="grignard__grignard-volume" id="grignard__grignard-volume" min="0" required> mL
+        </div>
+        <div>
+          <label for="grignard__grignard-volume-total">Total volume of Grignard solution:</label>
+          <input type="number" name="grignard__grignard-volume-total" id="grignard__grignard-volume-total" min="0"> mL (not required)
+        </div>
       </div>
 
       <button type="button" class="js-grignard__grignard-calculate">Calculate</button>
@@ -130,22 +134,24 @@
         </details>
       </aside>
 
-      <label for="suffert-select">Choose the Suffert reagent:</label>
-      <select style="margin-top: 12px;" name="suffert" id="suffert-select">
-        <option value="toluidine" selected>toluidine</option>
-        <option value="benzylaniline">benzylanaline</option>
-      </select>
-      <div>
-        <label for="lithium__suffert-mass">Measured mass of Suffert's reagent:</label>
-        <input type="number" name="lithium__suffert-mass" id="lithium__suffert-mass" min="0" required> mg
-      </div>
-      <div>
-        <label for="lithium__lithium-volume">Used volume of organolithium solution:</label>
-        <input type="number" name="lithium__lithium-volume" id="lithium__lithium-volume" min="0" required> mL
-      </div>
-      <div>
-        <label for="lithium__lithium-volume-total">Total volume of organolithium solution:</label>
-        <input type="number" name="lithium__lithium-volume-total" id="lithium__lithium-volume-total" min="0"> mL (not required)
+      <div id="titration-lithium">
+        <label for="suffert-select">Choose the Suffert reagent:</label>
+        <select style="margin-top: 12px;" name="suffert" id="suffert-select">
+          <option value="toluidine" selected>toluidine</option>
+          <option value="benzylaniline">benzylanaline</option>
+        </select>
+        <div>
+          <label for="lithium__suffert-mass">Measured mass of Suffert's reagent:</label>
+          <input type="number" name="lithium__suffert-mass" id="lithium__suffert-mass" min="0" required> mg
+        </div>
+        <div>
+          <label for="lithium__lithium-volume">Used volume of organolithium solution:</label>
+          <input type="number" name="lithium__lithium-volume" id="lithium__lithium-volume" min="0" required> mL
+        </div>
+        <div>
+          <label for="lithium__lithium-volume-total">Total volume of organolithium solution:</label>
+          <input type="number" name="lithium__lithium-volume-total" id="lithium__lithium-volume-total" min="0"> mL (not required)
+        </div>
       </div>
 
       <button type="button" class="js-lithium__lithium-calculate">Calculate</button>
