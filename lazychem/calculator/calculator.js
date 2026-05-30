@@ -306,8 +306,7 @@ addGlobalEventListener("keydown", "#titration-lithium input", e => {
 
 
 
-
-addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
+function calculateVirtualMass() {
   const totalMass = document.getElementById("total-mass").value;
   const productIntegral = document.getElementById("product-integral").value;
   const productH = document.getElementById("product-H").value;
@@ -350,7 +349,7 @@ addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
   let virtualMassHTML = `
     <div>
       <p><label for="virtual-mass__copy">Copy the short version:</label></p>
-      <textarea name="virtual-mass__copy" id="virtual-mass__copy" class="js-virtual-mass__summary" cols="40" rows="1">
+      <textarea name="virtual-mass__copy" id="virtual-mass__copy" class="js-virtual-mass__summary" cols="40" rows="2">
       </textarea>
     </div>
     <div class="tooltip">
@@ -395,6 +394,10 @@ addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
             <span class="bottom">H<sub>I1</sub></span>
           </span>
           <span>&middot; M<sub>I1</sub></span>
+
+          +
+
+          ...
         </span>
       </span>
       
@@ -429,6 +432,10 @@ addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
             <span class="bottom">${impurityH1}</span>
           </span>
           <span>&middot; ${impurityMW1}&nbsp;g/mol</span>
+
+          +
+
+          ...
         </span>
       </span>
     </p>
@@ -439,7 +446,7 @@ addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
   document.querySelector(".js-extra-field__virtual-mass").innerHTML = virtualMassHTML;
 
   document.getElementById("virtual-mass__copy").textContent = `
-    product (${virtualMassResultHTML}), ${purity}% purity.
+    product (${virtualMassResultHTML}), ${purity}% purity (integrals: ${productIntegral}:${impurityIntegral1}).
   `.trim();
 
   document.querySelectorAll(".virtual-mass__copy-text").forEach(copyButton => {
@@ -452,4 +459,13 @@ addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
       tooltip.textContent = "Copied!";
     });
   });
+};
+
+addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
+  calculateVirtualMass();
+});
+addGlobalEventListener("keydown", "#virtual-mass input", e => {
+  if (e.key === "Enter") {
+    calculateVirtualMass();
+  };
 });
