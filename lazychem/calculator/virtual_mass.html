@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/styles/index.css">
 
   <script type="module" src="/scripts/components/allComponents.js" defer></script>
-  <script type="module" src="calculator.js" defer></script>
+  <script type="module" src="virtual_mass.js" defer></script>
 </head>
 <body>
   <nav class="primary-navigation" aria-label="primary-navigation"></nav>
@@ -59,6 +59,7 @@
           <label for="product-MW">Molecular weight:</label>
           <input type="number" name="product-MW" id="product-MW" min="0" required> g/mol
         </div>
+        
         <p>Impurity 1:</p>
         <div>
           <label for="impurity-integral-1">Integral:</label>
@@ -73,6 +74,8 @@
           <input type="number" name="impurity-MW-1" id="impurity-MW-1" min="0" required> g/mol
         </div>
       </div>
+
+      <button type="button">+</button>
       
       <button type="button" class="js-calculate-virtual-mass">Calculate</button>
       
