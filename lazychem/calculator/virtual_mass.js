@@ -163,3 +163,98 @@ addGlobalEventListener("keydown", "#virtual-mass input", e => {
     calculateVirtualMass();
   };
 });
+
+
+
+
+const impurityList = JSON.parse(localStorage.getItem("impurityList")) || [
+  {
+    integral: "",
+    protons: "1",
+    molecularWeight: "",
+  },
+];
+
+function saveImpurityList() {
+  localStorage.setItem("impurityList", JSON.stringify(impurityList));
+};
+
+renderImpurityList();
+
+function renderImpurityList() {
+  let impurityListHTML = '';
+
+  impurityList.forEach((impurityObject, i) => {
+    const impurityWrapper = document.createElement("div");
+    // impurityWrapper.className = "impurity";
+
+    const number = i+1;
+
+    const html = `
+      <p>Impurity ${number}:</p>
+      <div>
+        <label for="impurity-integral-${number}">Integral:</label>
+        <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
+      </div>
+      <div>
+        <label for="impurity-H-${number}">Number of protons (H):</label>
+        <input type="number" name="impurity-H-${number}" id="impurity-H-${number}" value="${impurityObject.protons}" min="1" required>
+      </div>
+      <div>
+        <label for="impurity-MW-${number}">Molecular weight:</label>
+        <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" value="${impurityObject.molecularWeight}" required> g/mol
+      </div>
+
+      <button class="delete-button" data-delete-button="${i}">Delete</button>
+    `;
+    impurityWrapper.innerHTML = html;
+    
+    impurityListHTML += html;
+
+    addGlobalEventListener("input", `#impurity-integral-${number}`, e => {
+      impurityList[i].integral = e.target.value;
+      saveImpurityList();
+    });
+    addGlobalEventListener("input", `#impurity-H-${number}`, e => {
+      impurityList[i].protons = e.target.value;
+      saveImpurityList();
+    });
+    addGlobalEventListener("input", `#impurity-MW-${number}`, e => {
+      impurityList[i].molecularWeight = e.target.value;
+      saveImpurityList();
+    });
+  });
+  
+  document.querySelector("#impurities-display").innerHTML = impurityListHTML;
+
+  deleteImpurity();
+};
+
+function deleteImpurity() {
+  const deleteButtons = document.querySelectorAll(".delete-button");
+  // console.log(deleteButtons);
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const index = button.dataset.deleteButton;
+      impurityList.splice(index, 1);
+      saveImpurityList();
+      renderImpurityList();
+    });
+  });
+};
+
+function addImpurity() {
+  impurityList.push({
+    integral: "",
+    protons: "1",
+    molecularWeight: "",
+  });
+
+  saveImpurityList();
+  renderImpurityList();
+};
+
+addGlobalEventListener("click", "#add-impurity-button", () => {
+  addImpurity();
+});
+

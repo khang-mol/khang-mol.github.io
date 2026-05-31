@@ -310,3 +310,59 @@ footer {
   margin-top: 1rem;
   padding: 8px;
 }
+
+
+
+
+.default-button {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  padding: 8px 16px;
+  line-height: 20px;
+  margin-top: 8px;
+  vertical-align: middle;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: #0366d6;
+  /* box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset; */
+  transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  transition-property: color, background-color, border-color;
+}
+.default-button:hover {
+  color: #0366d6;
+  background-color: #fafbfc;
+  border-color: #1b1f2326;
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  transition-duration: 0.1s;
+}
+
+/*************** Data title ***************/
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.2s ease 0.6s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: #666;
+  color: #fff;
+  padding: 1px 5px 2px 5px;
+  position: absolute;
+  bottom: -1.75rem;
+  left: 0%;
+  /* white-space: pre-wrap; */
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+  max-width: fit-content;
+  /* width: min(70vw, fit-content); */
+  /* width: 70vw; */
+}
+[data-title] {
+  position: relative;
+}
