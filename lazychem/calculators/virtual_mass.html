@@ -40,7 +40,11 @@
       <div id="virtual-mass">
         <div>
           <label for="total-mass">Total mass:</label>
-          <input type="number" name="total-mass" id="total-mass" min="0" required> mg
+          <input type="number" name="total-mass" id="total-mass" min="0" required>
+          <select name="total-mass-select" id="total-mass-select">
+            <option value="mg" selected>mg</option>
+            <option value="g">g</option>
+          </select>
         </div>
         <div>
           <label for="expected-moles">Expected moles:</label>
@@ -57,23 +61,10 @@
         </div>
         <div>
           <label for="product-MW">Molecular weight:</label>
-          <input type="number" name="product-MW" id="product-MW" min="0" required> g/mol
+          <input type="number" name="product-MW" id="product-MW" min="0" style="width: 8rem;" required> g/mol
         </div>
         
         <div id="impurities-display"></div>
-        <!-- <p>Impurity 1:</p>
-        <div>
-          <label for="impurity-integral-1">Integral:</label>
-          <input type="number" name="impurity-integral-1" id="impurity-integral-1" min="0" required>
-        </div>
-        <div>
-          <label for="impurity-H-1">Number of protons (H):</label>
-          <input type="number" name="impurity-H-1" id="impurity-H-1" value="1" min="1" required>
-        </div>
-        <div>
-          <label for="impurity-MW-1">Molecular weight:</label>
-          <input type="number" name="impurity-MW-1" id="impurity-MW-1" min="0" required> g/mol
-        </div> -->
       </div>
 
       <button id="add-impurity-button" type="button" class="default-button" data-title="Add impurity (this is filler text to test something)">+</button>

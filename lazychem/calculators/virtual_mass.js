@@ -35,7 +35,7 @@ function renderImpurityList() {
       </div>
       <div>
         <label for="impurity-MW-${number}">Molecular weight:</label>
-        <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" value="${impurityObject.molecularWeight}" required> g/mol
+        <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" style="width: 8rem;" value="${impurityObject.molecularWeight}" required> g/mol
       </div>
 
       <button class="delete-button" data-delete-button="${i}">Delete</button>
@@ -95,16 +95,21 @@ addGlobalEventListener("click", "#add-impurity-button", () => {
 
 
 function calculateVirtualMass() {
-  const totalMass = document.getElementById("total-mass").value;
-  const productIntegral = document.getElementById("product-integral").value;
-  const productH = document.getElementById("product-H").value;
-  const productMW = document.getElementById("product-MW").value;
+  let totalMass = Number(document.getElementById("total-mass").value);
+  const productIntegral = Number(document.getElementById("product-integral").value);
+  const productH = Number(document.getElementById("product-H").value);
+  const productMW = Number(document.getElementById("product-MW").value);
 
-  if (!(Number(totalMass) && Number(productIntegral) && Number(productH) && Number(productMW))) {
+  if (!(totalMass && productIntegral && productH && productMW)) {
     alert("Invalid numbers");
     return;
   };
   const productFraction = productIntegral/productH;
+
+  const unit = document.getElementById("total-mass-select").value;
+  if (unit === "g") {
+    totalMass *= 1000;
+  };
 
 
   let purityAcc = 0;
@@ -112,12 +117,11 @@ function calculateVirtualMass() {
   let ratio = productIntegral;
   
   impurityList.forEach((impurityObject, i) => {
-    const number = i + 1;
-    const impurityIntegral = impurityObject.integral;
-    const impurityH = impurityObject.protons;
-    const impurityMW = impurityObject.molecularWeight;
+    const impurityIntegral = Number(impurityObject.integral);
+    const impurityH = Number(impurityObject.protons);
+    const impurityMW = Number(impurityObject.molecularWeight);
 
-    if (!(Number(impurityIntegral) && Number(impurityH) && Number(impurityMW))) {
+    if (!(impurityIntegral && impurityH && impurityMW)) {
       alert("Invalid numbers");
       return;
     };
@@ -130,31 +134,26 @@ function calculateVirtualMass() {
   });
 
   
-  // const impurityIntegral1 = document.getElementById("impurity-integral-1").value;
-  // const impurityH1 = document.getElementById("impurity-H-1").value;
-  // const impurityMW1 = document.getElementById("impurity-MW-1").value;
-  
-  // if (!(Number(impurityIntegral1) && Number(impurityH1) && Number(impurityMW1))) {
-  //   alert("Invalid numbers");
-  //   return;
-  // };
-  
-  // const impurity1Fraction = impurityIntegral1/impurityH1;
-  const purity = (productFraction / (productFraction + purityAcc) * 100).toFixed(0);
+  const purity = Math.round(productFraction / (productFraction + purityAcc) * 100);
 
 
   const productMass = (totalMass * productFraction * productMW 
     / (productFraction * productMW 
-    + impurityAcc)).toFixed(1);
+    + impurityAcc));
   
   const productMoles = (productMass / productMW).toPrecision(3);
 
-  let virtualMassResultHTML = `${productMass} mg, ${productMoles} mmol`;
+  let massFactor = 1;
+  if (unit === "g") {
+    massFactor *= 1000;
+  };
+  const printedMass = (productMass / massFactor).toFixed(1);
+  let virtualMassResultHTML = `${printedMass} ${unit}, ${productMoles} mmol`;
 
-  const expectedMoles = document.getElementById("expected-moles").value;
+  const expectedMoles = Number(document.getElementById("expected-moles").value);
   let productYield;
-  if (Number(expectedMoles)) {
-    productYield = (productMoles / expectedMoles).toFixed(2) * 100;
+  if (expectedMoles) {
+    productYield = Math.round((productMoles / expectedMoles) * 100);
     virtualMassResultHTML += `, ${productYield}%`;
   };
 
@@ -271,5 +270,7 @@ addGlobalEventListener("keydown", "#virtual-mass input", e => {
     calculateVirtualMass();
   };
 });
-
+// addGlobalEventListener("change", "#total-mass-select", () => {
+//   calculateVirtualMass();
+// });
 

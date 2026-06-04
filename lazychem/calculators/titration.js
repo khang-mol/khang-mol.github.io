@@ -204,7 +204,6 @@ addGlobalEventListener("keydown", "#titration-grignard input", e => {
 
 
 function titrationLithium() {
-
   const suffertMass = document.getElementById("lithium__suffert-mass").value;
   const suffertReagent = document.getElementById("suffert-select").value;
   let suffertMolarMass;
