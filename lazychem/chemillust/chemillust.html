@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="/styles/reset.css">
   <link rel="stylesheet" href="/styles/index.css">
+  <link rel="stylesheet" href="/styles/chemillust.css">
 
   <script type="module" src="/scripts/components/allComponents.js" defer></script>
   <script type="module" src="./chemillust.js" defer></script>
@@ -21,9 +22,9 @@
     <header></header>
     <main>
       <div id="toolbar--drawer">
-        <button id="button--draw-atom" class="active">Atom</button>
-        <button id="button--draw-bond">Bond</button>
-        <button id="button--delete">Delete</button>
+        <button id="button--draw-atom" class="toolbar--drawer-button active">Atom</button>
+        <button id="button--draw-bond" class="toolbar--drawer-button">Bond</button>
+        <button id="button--delete" class="toolbar--drawer-button">Delete</button>
       </div>
 
       <svg id="canvas"></svg>

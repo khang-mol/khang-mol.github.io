@@ -29,15 +29,6 @@
       
       <p>zincate solution:</p>
       <p>Do a reverse titration. It is assumed, that your zincate solution (analyte) is added to your iodine stock solution in THF (titrant).</p>
-      <!-- <ol>
-        <li>Input mass of iodine I<sub>2</sub></li>
-        <li>Moles of iodine will be calculated</li>
-        <li>Input used volume of zincate</li>
-        <li>Input how many equivalents of iodine are used up per zincate</li>
-        <li>Concentration of zincate will be calculated</li>
-        <li>Extra: input total volume of zincate</li>
-        <li>Extra: calculate total moles of zincate inside solution</li>
-      </ol> -->
 
       <div id="titration-zinc-solution">
         <div>
@@ -56,24 +47,44 @@
           <label for="solution__zincate-volume-total">Total volume of zincate:</label>
           <input type="number" name="solution__zincate-volume-total" id="solution__zincate-volume-total" min="0"> mL (not required)
         </div>
+
+        <button type="button" class="js-solution__iodometry-calculate">Calculate</button>
+        
+        <div class="extra-field js-extra-field"></div>
       </div>
 
-      <button type="button" class="js-solution__iodometry-calculate">Calculate</button>
+
+
+      <p style="margin-top: 3rem;">zincate solid (in the works, contact me when needed):</p>
+      <p>Do a normal titration by adding iodine stock solution in THF (titrant) to a suspension of solid zincate in THF (analyte).</p>
+
+      <!-- <div id="titration-zinc-solid">
+        <div>
+          <label for="solid__zincate-mass">Measured mass of solid zincate:</label>
+          <input type="number" name="solid__zincate-mass" id="solid__zincate-mass" min="0" required> mg
+        </div>
+        <div>
+          <label for="solid__zincate-mass-total">Total mass of obtained zincate:</label>
+          <input type="number" name="solid__zincate-mass-total" id="solid__zincate-mass-total"> (m)g
+        </div>
+        <div>
+          <label for="solid__iodine-equivalents">Equivalents of I<sub>2</sub>:</label>
+          <input type="number" name="solid__iodine-equivalents" id="solid__iodine-equivalents" value="1" min="1" max="10" required>
+        </div>
+        <div>
+          <label for="solid__iodine-mass">Measured mass of I<sub>2</sub>:</label>
+          <input type="number" name="solid__iodine-mass" id="solid__iodine-mass" min="0" required> mg
+        </div>
+        <div>
+          <label for="solid__THF-volume">Volume of THF:</label>
+          <input type="number" name="solid__THF-volume" id="solid__THF-volume" min="0" required> mL
+        </div>
+        <div>
+          <label for="solid__iodine-volume">Used volume of I<sub>2</sub>:</label>
+          <input type="number" name="solid__iodine-volume" id="solid__iodine-volume" min="0" required> mL
+        </div>
+      </div> -->
       
-      <div class="extra-field js-extra-field"></div>
-
-
-      <p>zincate solid (in the works):</p>
-      <!-- <ol>
-        <li>input mass of iodine I2</li>
-        <li>input volume of THF</li>
-        <li>calculate concentration of iodine solution</li>
-        <li>input mass of zincate</li>
-        <li>input how many equivalents of iodine are used up per zincate</li>
-        <li>calculate moles of used zincate</li>
-        <li>extra: input total mass of zincate</li>
-        <li>extra: calculate total moles of zincate</li>
-      </ol> -->
 
 
       <h2>Grignard (or phenyl lithium) titration calculator</h2>
@@ -110,11 +121,12 @@
           <label for="grignard__grignard-volume-total">Total volume of Grignard solution:</label>
           <input type="number" name="grignard__grignard-volume-total" id="grignard__grignard-volume-total" min="0"> mL (not required)
         </div>
+
+        <button type="button" class="js-grignard__grignard-calculate">Calculate</button>
+  
+        <div class="extra-field js-grignard__extra-field"></div>
       </div>
 
-      <button type="button" class="js-grignard__grignard-calculate">Calculate</button>
-
-      <div class="extra-field js-grignard__extra-field"></div>
 
 
       <h2>Lithium organyls (e. g. (n-/s-/t-)BuLi)</h2>
@@ -152,11 +164,11 @@
           <label for="lithium__lithium-volume-total">Total volume of organolithium solution:</label>
           <input type="number" name="lithium__lithium-volume-total" id="lithium__lithium-volume-total" min="0"> mL (not required)
         </div>
+
+        <button type="button" class="js-lithium__lithium-calculate">Calculate</button>
+  
+        <div class="extra-field js-lithium__extra-field"></div>
       </div>
-
-      <button type="button" class="js-lithium__lithium-calculate">Calculate</button>
-
-      <div class="extra-field js-lithium__extra-field"></div>
     </main>
   </div>
   
