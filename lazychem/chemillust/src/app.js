@@ -1,13 +1,22 @@
 //@ts-check
-import { addGlobalEventListener } from "../../scripts/components/allComponents.js";
+import { addGlobalEventListener } from "../../../scripts/components/allComponents.js";
 
-const molecule = {
-  atoms: [],
-  bonds: [],
+import { createMolecule } from "./model/molecule.js";
+
+import { CanvasRenderer } from "./render/CanvasRenderer.js";
+
+
+
+function createAtomIndex(molecule) {
+  const map = new Map();
+
+  for (const atom of molecule.atoms) {
+    map.set(atom.id, atom);
+  };
+
+  return map;
 };
 
-let atomId = 0;
-let bondId = 0;
 
 
 /**
@@ -21,8 +30,6 @@ function setAction(currentButton) {
 };
 
 
-const canvas = document.getElementById("canvas");
-
 /**
  * @type {object}
  */
@@ -31,7 +38,7 @@ let drawerActiveButton = document.querySelector("#button--draw-atom");
 /**
  * @type {object}
 */
-const drawerButtons = document.querySelectorAll(".toolbar--drawer-button");
+const drawerButtons = document.querySelectorAll("[data-tool]");
 
 drawerButtons.forEach(button => {
   button.addEventListener("click", () => {
@@ -49,3 +56,9 @@ drawerButtons.forEach(button => {
 //   console.log(e);
 // });
 
+
+const canvas = document.getElementById("canvas");
+
+const molecule = createMolecule();
+
+const renderer = new CanvasRenderer(canvas);

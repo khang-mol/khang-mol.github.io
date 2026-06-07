@@ -1,6 +1,10 @@
-.toolbar--drawer-button {
+#toolbar--drawer button {
   background-color: aquamarine;
 }
-.toolbar--drawer-button.active {
+#toolbar--drawer button.active {
   background-color: brown;
+}
+
+#canvas {
+  display: block;
 }
