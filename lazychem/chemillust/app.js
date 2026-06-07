@@ -1,6 +1,14 @@
 //@ts-check
 import { addGlobalEventListener } from "../../scripts/components/allComponents.js";
 
+const molecule = {
+  atoms: [],
+  bonds: [],
+};
+
+let atomId = 0;
+let bondId = 0;
+
 
 /**
  * Clicked button will be the active button.
