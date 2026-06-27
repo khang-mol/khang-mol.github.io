@@ -1,11 +1,15 @@
 import { addGlobalEventListener } from "../../scripts/components/allComponents.js";
 
-
-const impurityList = JSON.parse(localStorage.getItem("impurityList")) || [{
+const impurityListDefault = {
   integral: "",
   protons: "1",
   molecularWeight: "",
-}];
+  check: true,
+};
+
+const impurityList = JSON.parse(
+    localStorage.getItem("impurityList")
+  ) || [impurityListDefault];
 
 function saveImpurityList() {
   localStorage.setItem("impurityList", JSON.stringify(impurityList));
@@ -21,10 +25,15 @@ function renderImpurityList() {
     const impurityWrapper = document.createElement("div");
     // impurityWrapper.className = "impurity";
 
+    const check = impurityObject.check ? "checked" : "";
+
     const number = i+1;
 
     const html = `
-      <p>Impurity ${number}:</p>
+      <p>
+        <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${i}" ${check}>
+        <label for="impurity-${number}">Impurity ${number}:</label>
+      </p>
       <div>
         <label for="impurity-integral-${number}">Integral:</label>
         <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
@@ -45,20 +54,30 @@ function renderImpurityList() {
     impurityListHTML += html;
 
     addGlobalEventListener("input", `#impurity-integral-${number}`, e => {
-      impurityList[i].integral = e.target.value;
+      impurityObject.integral = e.target.value;
       saveImpurityList();
     });
     addGlobalEventListener("input", `#impurity-H-${number}`, e => {
-      impurityList[i].protons = e.target.value;
+      impurityObject.protons = e.target.value;
       saveImpurityList();
     });
     addGlobalEventListener("input", `#impurity-MW-${number}`, e => {
-      impurityList[i].molecularWeight = e.target.value;
+      impurityObject.molecularWeight = e.target.value;
+      saveImpurityList();
+    });
+  });
+
+  document.querySelector("#impurities-display").innerHTML = impurityListHTML;
+  
+
+  document.querySelectorAll(".impurity-checkbox").forEach(checkbox => {
+    checkbox.addEventListener("change", () => {
+      const id = Number(checkbox.dataset.impurityCheckbox);
+      impurityList[id].check = checkbox.checked;
       saveImpurityList();
     });
   });
   
-  document.querySelector("#impurities-display").innerHTML = impurityListHTML;
 
   deleteImpurity();
 };
@@ -77,11 +96,7 @@ function deleteImpurity() {
 };
 
 function addImpurity() {
-  impurityList.push({
-    integral: "",
-    protons: "1",
-    molecularWeight: "",
-  });
+  impurityList.push(structuredClone(impurityListDefault));
 
   saveImpurityList();
   renderImpurityList();
@@ -117,6 +132,8 @@ function calculateVirtualMass() {
   let ratio = productIntegral;
   
   impurityList.forEach((impurityObject, i) => {
+    if (!impurityObject.check) return;
+    
     const impurityIntegral = Number(impurityObject.integral);
     const impurityH = Number(impurityObject.protons);
     const impurityMW = Number(impurityObject.molecularWeight);
