@@ -28,7 +28,7 @@ export function addBond(molecule, atom1Id, atom2Id, order = 1) {
   const bond = {
     id: molecule.nextBondId++,
     a1: atom1Id,
-    a2:atom2Id,
+    a2: atom2Id,
     order,
   };
 
