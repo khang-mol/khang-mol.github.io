@@ -367,3 +367,20 @@ footer {
 [data-title] {
   position: relative;
 }
+
+
+
+.container-visualizer {
+  border: 2px solid #0366d6;
+}
+
+.container-highlight-light {
+  background: var(--bg-light);
+  /* padding: 4px; */
+}
+.container-highlight {
+  background: var(--bg);
+}
+.draggable {
+  cursor: move;
+}

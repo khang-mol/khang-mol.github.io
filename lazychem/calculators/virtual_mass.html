@@ -37,31 +37,33 @@
         <li>Input Integral, number of protons (H), molecular weight of other compound</li>
       </ol>
 
-      <div id="virtual-mass">
-        <div>
-          <label for="total-mass">Total mass:</label>
-          <input type="number" name="total-mass" id="total-mass" min="0" required>
-          <select name="total-mass-select" id="total-mass-select">
-            <option value="mg" selected>mg</option>
-            <option value="g">g</option>
-          </select>
-        </div>
-        <div>
-          <label for="expected-moles">Expected moles:</label>
-          <input type="number" name="expected-moles" id="expected-moles" min="0"> mmol (not required)
-        </div>
-        <p>Product:</p>
-        <div>
-          <label for="product-integral">Integral:</label>
-          <input type="number" name="product-integral" id="product-integral" value="1" min="0" required>
-        </div>
-        <div>
-          <label for="product-H">Number of protons (H):</label>
-          <input type="number" name="product-H" id="product-H" value="1" min="1" required>
-        </div>
-        <div>
-          <label for="product-MW">Molecular weight:</label>
-          <input type="number" name="product-MW" id="product-MW" min="0" style="width: 8rem;" required> g/mol
+      <div id="virtual-mass" class="">
+        <div style="padding: 8px;">
+          <div>
+            <label for="total-mass">Total mass:</label>
+            <input type="number" name="total-mass" id="total-mass" min="0" required>
+            <select name="total-mass-select" id="total-mass-select">
+              <option value="mg" selected>mg</option>
+              <option value="g">g</option>
+            </select>
+          </div>
+          <div>
+            <label for="expected-moles">Expected moles:</label>
+            <input type="number" name="expected-moles" id="expected-moles" min="0"> mmol (not required)
+          </div>
+          <p>Product:</p>
+          <div>
+            <label for="product-integral">Integral:</label>
+            <input type="number" name="product-integral" id="product-integral" value="1" min="0" required>
+          </div>
+          <div>
+            <label for="product-H">Number of protons (H):</label>
+            <input type="number" name="product-H" id="product-H" value="1" min="1" required>
+          </div>
+          <div>
+            <label for="product-MW">Molecular weight:</label>
+            <input type="number" name="product-MW" id="product-MW" min="0" style="width: 8rem;" required> g/mol
+          </div>
         </div>
         
         <div id="impurities-display"></div>

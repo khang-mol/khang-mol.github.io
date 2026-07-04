@@ -21,35 +21,36 @@ renderImpurityList();
 function renderImpurityList() {
   let impurityListHTML = '';
 
-  impurityList.forEach((impurityObject, i) => {
-    const impurityWrapper = document.createElement("div");
-    // impurityWrapper.className = "impurity";
-
+  impurityList.forEach((impurityObject, index) => {
     const check = impurityObject.check ? "checked" : "";
 
-    const number = i+1;
+    const number = index+1;
 
     const html = `
-      <p>
-        <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${i}" ${check}>
-        <label for="impurity-${number}">Impurity ${number}:</label>
-      </p>
-      <div>
-        <label for="impurity-integral-${number}">Integral:</label>
-        <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
+      <div class="${index % 2 === 0 ? "container-highlight-light" : "container-highlight"}
+                  draggable" 
+            style="padding: 8px;"
+            draggable="true">
+        <div>
+          <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${index}" ${check}>
+          <label for="impurity-${number}">Impurity ${number}:</label>
+        </div>
+        <div>
+          <label for="impurity-integral-${number}">Integral:</label>
+          <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
+        </div>
+        <div>
+          <label for="impurity-H-${number}">Number of protons (H):</label>
+          <input type="number" name="impurity-H-${number}" id="impurity-H-${number}" value="${impurityObject.protons}" min="1" required>
+        </div>
+        <div>
+          <label for="impurity-MW-${number}">Molecular weight:</label>
+          <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" style="width: 8rem;" value="${impurityObject.molecularWeight}" required> g/mol
+        </div>
+        <button class="delete-button" data-delete-button="${index}">Delete</button>
       </div>
-      <div>
-        <label for="impurity-H-${number}">Number of protons (H):</label>
-        <input type="number" name="impurity-H-${number}" id="impurity-H-${number}" value="${impurityObject.protons}" min="1" required>
-      </div>
-      <div>
-        <label for="impurity-MW-${number}">Molecular weight:</label>
-        <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" style="width: 8rem;" value="${impurityObject.molecularWeight}" required> g/mol
-      </div>
-
-      <button class="delete-button" data-delete-button="${i}">Delete</button>
     `;
-    impurityWrapper.innerHTML = html;
+    // impurityWrapper.innerHTML = html;
     
     impurityListHTML += html;
 
@@ -133,7 +134,7 @@ function calculateVirtualMass() {
   
   impurityList.forEach((impurityObject, i) => {
     if (!impurityObject.check) return;
-    
+
     const impurityIntegral = Number(impurityObject.integral);
     const impurityH = Number(impurityObject.protons);
     const impurityMW = Number(impurityObject.molecularWeight);
@@ -164,7 +165,7 @@ function calculateVirtualMass() {
   if (unit === "g") {
     massFactor *= 1000;
   };
-  const printedMass = (productMass / massFactor).toFixed(1);
+  const printedMass = (productMass / massFactor).toPrecision(3);
   let virtualMassResultHTML = `${printedMass} ${unit}, ${productMoles} mmol`;
 
   const expectedMoles = Number(document.getElementById("expected-moles").value);
@@ -280,10 +281,12 @@ function calculateVirtualMass() {
 };
 
 addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
+  // saveImpurityList();
   calculateVirtualMass();
 });
 addGlobalEventListener("keydown", "#virtual-mass input", e => {
   if (e.key === "Enter") {
+    // saveImpurityList();
     calculateVirtualMass();
   };
 });
