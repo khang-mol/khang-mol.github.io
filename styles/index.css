@@ -390,7 +390,7 @@ footer {
 
 
 .measure {
-  visibility: visible;
+  visibility: hidden;
   position: fixed;
   white-space: pre;
 }
