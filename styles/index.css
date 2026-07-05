@@ -387,3 +387,15 @@ footer {
 .draggable.dragging {
   opacity: 0.5;
 }
+
+
+.measure {
+  visibility: visible;
+  position: fixed;
+  white-space: pre;
+}
+
+.input-resizable {
+  min-width: fit-content;
+  max-width: 100%;
+}

@@ -18,3 +18,11 @@ export function addGlobalEventListener(type, selector, callback, parent = docume
     };
   });
 };
+
+export function resizeWidth(input, measure) {
+  const style = getComputedStyle(input);
+  measure.style.font = style.font;
+  measure.textContent = input.value || input.placeholder || " ";
+  
+  input.style.width = (measure.offsetWidth + 20) + "px";
+};

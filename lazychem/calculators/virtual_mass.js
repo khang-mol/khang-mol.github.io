@@ -1,6 +1,7 @@
-import { addGlobalEventListener } from "../../scripts/components/allComponents.js";
+import { addGlobalEventListener, resizeWidth } from "../../scripts/components/allComponents.js";
 
 const impurityListDefault = {
+  label: "",
   integral: "",
   protons: "1",
   molecularWeight: "",
@@ -35,6 +36,10 @@ function renderImpurityList() {
         <div>
           <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${index}" ${check}>
           <label for="impurity-${number}">Impurity ${number}:</label>
+          <label class="input-sizer">
+            <input type="text" size="fit-content" id="impurity-label-${number}" class="input-resizable" placeholder="Label" value="${impurityObject.label || ""}">
+            <span class="measure"></span>
+          </label>
         </div>
         <div>
           <label for="impurity-integral-${number}">Integral:</label>
@@ -55,6 +60,10 @@ function renderImpurityList() {
     
     impurityListHTML += html;
 
+    addGlobalEventListener("input", `#impurity-label-${number}`, e => {
+      impurityObject.label = e.target.value;
+      saveImpurityList();
+    });
     addGlobalEventListener("input", `#impurity-integral-${number}`, e => {
       impurityObject.integral = e.target.value;
       saveImpurityList();
@@ -71,7 +80,13 @@ function renderImpurityList() {
 
   document.querySelector("#impurities-container").innerHTML = impurityListHTML;
   
+  renderCheckboxes();
+  renderInputLabels();
+  deleteImpurity();
+};
 
+
+function renderCheckboxes() {
   document.querySelectorAll(".impurity-checkbox").forEach(checkbox => {
     checkbox.addEventListener("change", () => {
       const id = Number(checkbox.dataset.impurityCheckbox);
@@ -79,9 +94,19 @@ function renderImpurityList() {
       saveImpurityList();
     });
   });
-  
+};
 
-  deleteImpurity();
+function renderInputLabels() {
+  const inputSizers = document.querySelectorAll(".input-sizer");
+  inputSizers.forEach(inputSizer => {
+    const input = inputSizer.querySelector(".input-resizable");
+    const measure = inputSizer.querySelector(".measure");
+    resizeWidth(input, measure);
+  
+    input.addEventListener("input", () => {
+      resizeWidth(input, measure);
+    });
+  });
 };
 
 function deleteImpurity() {
