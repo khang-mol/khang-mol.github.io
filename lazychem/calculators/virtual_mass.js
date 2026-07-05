@@ -28,6 +28,7 @@ function renderImpurityList() {
 
     const html = `
       <div class="${index % 2 === 0 ? "container-highlight-light" : "container-highlight"}
+                  js-draggable-impurities
                   draggable" 
             style="padding: 8px;"
             draggable="true">
@@ -68,7 +69,7 @@ function renderImpurityList() {
     });
   });
 
-  document.querySelector("#impurities-display").innerHTML = impurityListHTML;
+  document.querySelector("#impurities-container").innerHTML = impurityListHTML;
   
 
   document.querySelectorAll(".impurity-checkbox").forEach(checkbox => {
@@ -294,3 +295,50 @@ addGlobalEventListener("keydown", "#virtual-mass input", e => {
 //   calculateVirtualMass();
 // });
 
+
+// function draggable() {};
+
+const draggableImpurities = document.querySelectorAll(".js-draggable-impurities");
+const impuritiesContainer = document.querySelector("#impurities-container");
+
+draggableImpurities.forEach(draggable => {
+  draggable.addEventListener("dragstart", () => {
+    draggable.classList.add("dragging");
+  });
+
+  draggable.addEventListener("dragend", () => {
+    draggable.classList.remove("dragging");
+  });
+});
+
+
+impuritiesContainer.addEventListener("dragover", e => {
+  // e.preventDefault(); // prevents cursor as "do not allow" or similar
+  const afterElement = getDragAfterElement(impuritiesContainer, e.clientY);
+  // console.log(afterElement);
+
+  const draggable = impuritiesContainer.querySelector(".dragging");
+  
+  if (afterElement == null) {
+    impuritiesContainer.appendChild(draggable);
+  } else {
+    impuritiesContainer.insertBefore(draggable, afterElement);
+  };
+});
+
+
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
+  const afterElement = draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - (box.height / 2);
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child};
+    };
+
+    return closest;
+    
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+  return afterElement;
+};
