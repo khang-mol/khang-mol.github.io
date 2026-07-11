@@ -1,4 +1,10 @@
-import { addGlobalEventListener, resizeWidth } from "../../scripts/components/allComponents.js";
+import { 
+  addGlobalEventListener, 
+  resizeWidth, 
+  moveIndex 
+} from "../../scripts/components/allComponents.js";
+
+
 
 const impurityListDefault = {
   label: "",
@@ -15,6 +21,7 @@ const impurityList = JSON.parse(
 function saveImpurityList() {
   localStorage.setItem("impurityList", JSON.stringify(impurityList));
 };
+
 
 
 renderImpurityList();
@@ -60,7 +67,6 @@ function renderImpurityList() {
         <div class="handle drag-handle">☰</div>
       </div>
     `;
-    // impurityWrapper.innerHTML = html;
     
     impurityListHTML += html;
 
@@ -311,70 +317,24 @@ function calculateVirtualMass() {
 };
 
 addGlobalEventListener("click", ".js-calculate-virtual-mass", () => {
-  // saveImpurityList();
   calculateVirtualMass();
 });
 addGlobalEventListener("keydown", "#virtual-mass input", e => {
   if (e.key === "Enter") {
-    // saveImpurityList();
     calculateVirtualMass();
   };
 });
-// addGlobalEventListener("change", "#total-mass-select", () => {
-//   calculateVirtualMass();
-// });
 
 
-// function draggable() {};
-
-// const draggableImpurities = document.querySelectorAll(".js-draggable-impurities");
-// const impuritiesContainer = document.querySelector("#impurities-container");
-
-// draggableImpurities.forEach(draggable => {
-//   draggable.addEventListener("dragstart", () => {
-//     draggable.classList.add("dragging");
-//   });
-
-//   draggable.addEventListener("dragend", () => {
-//     draggable.classList.remove("dragging");
-//   });
-// });
-
-
-// impuritiesContainer.addEventListener("dragover", e => {
-//   // e.preventDefault(); // prevents cursor as "do not allow" or similar
-//   const afterElement = getDragAfterElement(impuritiesContainer, e.clientY);
-//   // console.log(afterElement);
-
-//   const draggable = impuritiesContainer.querySelector(".dragging");
-  
-//   if (afterElement == null) {
-//     impuritiesContainer.appendChild(draggable);
-//   } else {
-//     impuritiesContainer.insertBefore(draggable, afterElement);
-//   };
-// });
-
-
-// function getDragAfterElement(container, y) {
-//   const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
-//   const afterElement = draggableElements.reduce((closest, child) => {
-//     const box = child.getBoundingClientRect();
-//     const offset = y - box.top - (box.height / 2);
-//     if (offset < 0 && offset > closest.offset) {
-//       return { offset: offset, element: child};
-//     };
-
-//     return closest;
-    
-//   }, { offset: Number.NEGATIVE_INFINITY }).element;
-
-//   return afterElement;
-// };
 
 
 new Sortable(document.getElementById("impurities-container"), {
   handle: ".handle",
   animation: 150,
   ghostClass: 'ghost',
+  onEnd(event) {
+    moveIndex(impurityList, event.oldIndex, event.newIndex)
+    saveImpurityList();
+    renderImpurityList();
+  }
 });

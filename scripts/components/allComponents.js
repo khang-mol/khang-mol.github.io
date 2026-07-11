@@ -26,3 +26,19 @@ export function resizeWidth(input, measure) {
   
   input.style.width = (measure.offsetWidth + 20) + "px";
 };
+
+export function switchIndeces(array, i, j) {
+  [array[i], array[j]] = [array[j], array[i]];
+};
+
+
+/**
+ * Takes array entry at index "oldIndex" and moves it to "newIndex"
+ * @param {object} array - The array.
+ * @param {number} oldIndex - Old index.
+ * @param {number} newIndex - New index.
+ */
+export function moveIndex(array, oldIndex, newIndex) {
+  const [item] = array.splice(oldIndex, 1);
+  array.splice(newIndex, 0, item);
+};
