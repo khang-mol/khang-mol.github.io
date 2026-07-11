@@ -369,7 +369,7 @@ footer {
 }
 
 
-
+/*************** Visualize container ***************/
 .container-visualizer {
   border: 2px solid #0366d6;
 }
@@ -381,14 +381,34 @@ footer {
 .container-highlight {
   background: var(--bg);
 }
-.draggable {
+
+
+/*************** Dragging ***************/
+.handle {
   cursor: move;
+  cursor: -webkit-grabbing;
 }
-.draggable.dragging {
-  opacity: 0.5;
+
+.container-drag {
+  display: flex;
+  align-items: stretch;
+}
+.draggable-content {
+  flex: 1;
+}
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+}
+.ghost {
+  opacity: 0.4;
+  background-color: rgb(144, 192, 232);
 }
 
 
+/*************** Label ***************/
 .measure {
   visibility: hidden;
   position: fixed;

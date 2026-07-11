@@ -28,32 +28,36 @@ function renderImpurityList() {
     const number = index+1;
 
     const html = `
-      <div class="${index % 2 === 0 ? "container-highlight-light" : "container-highlight"}
-                  js-draggable-impurities
-                  draggable" 
-            style="padding: 8px;"
-            draggable="true">
-        <div>
-          <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${index}" ${check}>
-          <label for="impurity-${number}">Impurity ${number}:</label>
-          <label class="input-sizer">
-            <input type="text" size="fit-content" id="impurity-label-${number}" class="input-resizable" placeholder="Label" value="${impurityObject.label || ""}">
-            <span class="measure"></span>
-          </label>
+      <div class="container-drag">
+        <div class="${index % 2 === 0 ? "container-highlight-light" : "container-highlight"}
+                    js-draggable-impurities
+                    draggable
+                    draggable-content"
+              style="padding: 8px;">
+          <div>
+            <input type="checkbox" name="impurity-${number}" id="impurity-${number}" class="impurity-checkbox" data-impurity-checkbox="${index}" ${check}>
+            <label for="impurity-${number}">Impurity ${number}:</label>
+            <label class="input-sizer">
+              <input type="text" size="fit-content" id="impurity-label-${number}" class="input-resizable" placeholder="Label" value="${impurityObject.label || ""}">
+              <span class="measure"></span>
+            </label>
+          </div>
+          <div>
+            <label for="impurity-integral-${number}">Integral:</label>
+            <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
+          </div>
+          <div>
+            <label for="impurity-H-${number}">Number of protons (H):</label>
+            <input type="number" name="impurity-H-${number}" id="impurity-H-${number}" value="${impurityObject.protons}" min="1" required>
+          </div>
+          <div>
+            <label for="impurity-MW-${number}">Molecular weight:</label>
+            <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" style="width: 8rem;" value="${impurityObject.molecularWeight}" required> g/mol
+          </div>
+          <button class="delete-button" data-delete-button="${index}">Delete</button>
         </div>
-        <div>
-          <label for="impurity-integral-${number}">Integral:</label>
-          <input type="number" name="impurity-integral-${number}" id="impurity-integral-${number}" min="0" value="${impurityObject.integral}" required>
-        </div>
-        <div>
-          <label for="impurity-H-${number}">Number of protons (H):</label>
-          <input type="number" name="impurity-H-${number}" id="impurity-H-${number}" value="${impurityObject.protons}" min="1" required>
-        </div>
-        <div>
-          <label for="impurity-MW-${number}">Molecular weight:</label>
-          <input type="number" name="impurity-MW-${number}" id="impurity-MW-${number}" min="0" style="width: 8rem;" value="${impurityObject.molecularWeight}" required> g/mol
-        </div>
-        <button class="delete-button" data-delete-button="${index}">Delete</button>
+
+        <div class="handle drag-handle">☰</div>
       </div>
     `;
     // impurityWrapper.innerHTML = html;
@@ -323,47 +327,54 @@ addGlobalEventListener("keydown", "#virtual-mass input", e => {
 
 // function draggable() {};
 
-const draggableImpurities = document.querySelectorAll(".js-draggable-impurities");
-const impuritiesContainer = document.querySelector("#impurities-container");
+// const draggableImpurities = document.querySelectorAll(".js-draggable-impurities");
+// const impuritiesContainer = document.querySelector("#impurities-container");
 
-draggableImpurities.forEach(draggable => {
-  draggable.addEventListener("dragstart", () => {
-    draggable.classList.add("dragging");
-  });
+// draggableImpurities.forEach(draggable => {
+//   draggable.addEventListener("dragstart", () => {
+//     draggable.classList.add("dragging");
+//   });
 
-  draggable.addEventListener("dragend", () => {
-    draggable.classList.remove("dragging");
-  });
-});
+//   draggable.addEventListener("dragend", () => {
+//     draggable.classList.remove("dragging");
+//   });
+// });
 
 
-impuritiesContainer.addEventListener("dragover", e => {
-  // e.preventDefault(); // prevents cursor as "do not allow" or similar
-  const afterElement = getDragAfterElement(impuritiesContainer, e.clientY);
-  // console.log(afterElement);
+// impuritiesContainer.addEventListener("dragover", e => {
+//   // e.preventDefault(); // prevents cursor as "do not allow" or similar
+//   const afterElement = getDragAfterElement(impuritiesContainer, e.clientY);
+//   // console.log(afterElement);
 
-  const draggable = impuritiesContainer.querySelector(".dragging");
+//   const draggable = impuritiesContainer.querySelector(".dragging");
   
-  if (afterElement == null) {
-    impuritiesContainer.appendChild(draggable);
-  } else {
-    impuritiesContainer.insertBefore(draggable, afterElement);
-  };
-});
+//   if (afterElement == null) {
+//     impuritiesContainer.appendChild(draggable);
+//   } else {
+//     impuritiesContainer.insertBefore(draggable, afterElement);
+//   };
+// });
 
 
-function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
-  const afterElement = draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - (box.height / 2);
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child};
-    };
+// function getDragAfterElement(container, y) {
+//   const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
+//   const afterElement = draggableElements.reduce((closest, child) => {
+//     const box = child.getBoundingClientRect();
+//     const offset = y - box.top - (box.height / 2);
+//     if (offset < 0 && offset > closest.offset) {
+//       return { offset: offset, element: child};
+//     };
 
-    return closest;
+//     return closest;
     
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
+//   }, { offset: Number.NEGATIVE_INFINITY }).element;
 
-  return afterElement;
-};
+//   return afterElement;
+// };
+
+
+new Sortable(document.getElementById("impurities-container"), {
+  handle: ".handle",
+  animation: 150,
+  ghostClass: 'ghost',
+});
