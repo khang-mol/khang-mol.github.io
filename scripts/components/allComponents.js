@@ -19,12 +19,12 @@ export function addGlobalEventListener(type, selector, callback, parent = docume
   });
 };
 
-export function resizeWidth(input, measure) {
+export function resizeWidth(input, measure, maxWidth) {
   const style = getComputedStyle(input);
   measure.style.font = style.font;
   measure.textContent = input.value || input.placeholder || " ";
   
-  input.style.width = (measure.offsetWidth + 20) + "px";
+  input.style.width = Math.min((measure.offsetWidth + 20), maxWidth) + "px";
 };
 
 export function switchIndeces(array, i, j) {

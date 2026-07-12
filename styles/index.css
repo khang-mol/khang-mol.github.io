@@ -413,6 +413,7 @@ footer {
   visibility: hidden;
   position: fixed;
   white-space: pre;
+  /* max-width: 100%; */
 }
 
 .input-resizable {

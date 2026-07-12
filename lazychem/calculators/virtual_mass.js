@@ -107,14 +107,17 @@ function renderCheckboxes() {
 };
 
 function renderInputLabels() {
+  const container = document.querySelector(".body-container");
+  
   const inputSizers = document.querySelectorAll(".input-sizer");
   inputSizers.forEach(inputSizer => {
     const input = inputSizer.querySelector(".input-resizable");
     const measure = inputSizer.querySelector(".measure");
-    resizeWidth(input, measure);
+    const maxWidth = container.clientWidth - (input.offsetLeft - container.offsetLeft + 50);
+    resizeWidth(input, measure, maxWidth);
   
     input.addEventListener("input", () => {
-      resizeWidth(input, measure);
+      resizeWidth(input, measure, maxWidth);
     });
   });
 };
